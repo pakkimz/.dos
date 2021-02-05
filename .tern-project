@@ -1,0 +1,11 @@
+{
+  "libs": [
+    "browser",
+    "ecmascript",
+    "jquery"
+  ],
+  "plugins": {
+    "node": {},
+    "esmodules": {}
+  }
+}
