@@ -12,7 +12,7 @@ syntax sync minlines=256
 
 filetype plugin indent on                               " all in one line
 
-call plug#begin('\Users\house\vimfiles\plugged\')
+call plug#begin('C:\Users\house\vimfiles\plugged\')
 " Plug 'igungor/schellar'
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }      " sudo xbps-install ctags
