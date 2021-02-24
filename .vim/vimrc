@@ -29,7 +29,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/loremipsum'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'vim-scripts/zoom.vim'
+" Plug 'vim-scripts/zoom.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'wellle/targets.vim'																" more powerful ci) ...
@@ -41,7 +41,7 @@ Plug 'ivalkeen/vim-simpledb'
 " Plug 'gregsexton/MatchTag'
 " Plug 'ap/vim-css-color'
 " Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()
 
