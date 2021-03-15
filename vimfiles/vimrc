@@ -48,7 +48,7 @@ Plug 'lfilho/cosco.vim'																	" alt+;
 " Plug 'Yggdroot/indentLine'															" need expandtab to make it works
 " Plug 'ivalkeen/vim-simpledb'
 " Plug 'gregsexton/MatchTag'
-" Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 " Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
