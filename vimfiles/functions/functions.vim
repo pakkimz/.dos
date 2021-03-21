@@ -24,6 +24,9 @@ let g:tagbar_width = 25
 " let g:qs_lazy_highlight = 1
 " let g:qs_max_chars = 300
 
+let g:tern_show_signature_in_pum = 1
+" let g:tern_show_argument_hints = "on_hold"
+
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }	" dont autostart
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1

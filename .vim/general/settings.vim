@@ -1,5 +1,5 @@
 set termguicolors                                       " enable true colors support
-set synmaxcol=300                                       " syntax coloring lines that are too long just slows down the world
+set synmaxcol=500                                       " syntax coloring lines that are too long just slows down the world
 set regexpengine=1																			" fixes slow speed due to syntax highlighting
 set updatetime=50
 set number
@@ -41,14 +41,15 @@ set backup
 set writebackup																					" make backup before overwriting the current buffer
 set backupcopy=yes																			" overwrite the original backup file
 set viminfo='20,\"100,s10,h                             " dont store more than 100 lines, h: disable hlsearch, s10 max KB
-set undodir^=C:/Users/house/.vim/.vim/tmp/undo
-set directory=C:/Users/house/.vim/.vim/tmp/swap
-set backupdir=C:/Users/house/.vim/.vim/tmp/backup
+set undodir^=C:\Users\house\vimfiles\.vim\tmp\undo
+set directory=C:\Users\house\vimfiles\.vim\tmp\swap
+set backupdir=C:\Users\house\vimfiles\.vim\tmp\backup
 set path=.,**																						" :find current and all the children
 set backspace=indent,eol,start													" set backspace to delete normally
 set hidden																							" moving buffer without saving it
 set wildcharm=<C-z>                                     " make mru and buffer working
 set virtualedit=block																		" block selection in visual mode
 set whichwrap+=<,>,h,l,[,]
-set completeopt=menu
+" set completeopt=menu
+set completeopt=menuone,noinsert
 set belloff=all

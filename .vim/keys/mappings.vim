@@ -32,8 +32,8 @@ nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprevious<CR>
 
 " add one space
-nnoremap [s i<space><esc>
-nnoremap ]s a<space><esc>
+nnoremap [s i<space><esc>l
+nnoremap ]s a<space><esc>h
 
 "easier horizontal scrolling
 nnoremap zl zL
