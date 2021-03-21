@@ -23,6 +23,9 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 
+" map enter as ctrl-y in vim completion
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
 " scroll in command mode
 cnoremap <C-k> <C-p>
 cnoremap <C-j> <C-n>
