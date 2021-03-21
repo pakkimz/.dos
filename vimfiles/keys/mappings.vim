@@ -15,16 +15,16 @@ noremap Q <Nop>
 inoremap <tab> <C-p>
 inoremap <S-tab> <tab>
 
-" easier scroll when wrap
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+" map enter as ctrl-y in vim completion
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
-" super duper tab
+" if(pumvisible) c-p, else <c-x><c-p>
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 
-" map enter as ctrl-y in vim completion
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+" easier scroll when wrap
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " scroll in command mode
 cnoremap <C-k> <C-p>
