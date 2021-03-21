@@ -44,6 +44,7 @@ set viminfo='20,\"100,s10,h                             " dont store more than 1
 set undodir^=C:\Users\house\vimfiles\.vim\tmp\undo
 set directory=C:\Users\house\vimfiles\.vim\tmp\swap
 set backupdir=C:\Users\house\vimfiles\.vim\tmp\backup
+set dictionary=C:\Users\house\vimfiles\dict\words				"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
 set backspace=indent,eol,start													" set backspace to delete normally
 set hidden																							" moving buffer without saving it
