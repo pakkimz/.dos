@@ -2,9 +2,9 @@ colorscheme gummybears
 " colorscheme schellar
 
 " change cursor shape in different mode
-" let &t_SI = "\<Esc>[6 q"
-" let &t_SR = "\<Esc>[4 q"
-" let &t_EI = "\<Esc>[2 q"
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 let mapleader = ' '
 let delimitMate_expand_cr = 1
