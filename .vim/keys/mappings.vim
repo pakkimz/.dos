@@ -18,7 +18,7 @@ inoremap <S-tab> <tab>
 " map enter as ctrl-y in vim completion
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
-" if(pumvisible) c-p, else <c-x><c-p>
+" not working when completeopt not set to 'menu'
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 
