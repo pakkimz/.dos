@@ -15,7 +15,7 @@ noremap Q <Nop>
 inoremap <tab> <C-p>
 inoremap <S-tab> <tab>
 
-" map enter as ctrl-y in vim completion is intrupt delimitMate_expand_cr
+" map enter as ctrl-y in vim completion intrupt delimitMate_expand_cr
 " inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " not working when completeopt not set to 'menu'
