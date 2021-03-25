@@ -75,6 +75,7 @@ nnoremap <silent><leader>R :bw!<CR>
 nnoremap <silent><leader>o :%bd\|e#\|bd#<CR>
 nnoremap <silent><leader>O :%bd!\|e#\|bd!#<CR>
 nnoremap <leader>a :Ag!<space>
+nnoremap <leader>A :AgFile!<space>
 nnoremap <leader>e :e<Space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>f :find<Space>
@@ -129,6 +130,7 @@ nnoremap <silent><C-s> :<C-u>call ToggleErrors()<CR>
 " nerdtree
 nnoremap gn :e .<CR>
 nnoremap gN :e ~/<CR>
+nnoremap gl :NERDTreeProjectLoadFromCWD<CR>
 nnoremap <silent><C-n> :NERDTreeToggle . <Bar>wincmd p<Bar><CR>
 nnoremap <silent><leader>d :bp<cr>:bd #<cr>
 
