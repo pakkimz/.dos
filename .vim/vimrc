@@ -13,7 +13,6 @@ Plug 'Raimondi/delimitMate'                             " jump c-g g or just rep
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdtree-project-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
-" Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rking/ag.vim'
 Plug 'matze/vim-move'
