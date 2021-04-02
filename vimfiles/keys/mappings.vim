@@ -11,12 +11,16 @@ nnoremap Y y$
 noremap q <Nop>
 noremap Q <Nop>
 
-" supertab. for 'cancel complete C-e' / 'C-y for yes'
-inoremap <tab> <C-p>
-inoremap <S-tab> <tab>
-
 " map enter as ctrl-y in vim completion intrupt delimitMate_expand_cr
 " inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
+" supertab. for 'cancel complete C-e' / 'C-y for yes'
+" inoremap <tab> <C-p>
+" inoremap <S-tab> <tab>
+
+" make tab look like common editor
+inoremap <expr> <tab> pumvisible() ? "\<C-Y>" : "\<tab>"
+inoremap <expr> <S-tab> pumvisible() ? "\<C-Y>" : "\<S-tab>"
 
 " not working when completeopt not set to 'menu'
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
