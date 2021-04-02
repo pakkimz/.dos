@@ -52,5 +52,6 @@ set wildcharm=<C-z>                                     " make mru and buffer wo
 set virtualedit=block																		" block selection in visual mode
 set whichwrap+=<,>,h,l,[,]
 " set completeopt=menu
-set completeopt=menuone,noinsert
+" set completeopt=menu,preview
+" set completeopt=menuone,noinsert
 set belloff=all
