@@ -8,6 +8,7 @@ call plug#begin('C:/Users/house/.vim/plugged/')
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }      " sudo xbps-install ctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
+Plug 'pakkimz/AutoComplPop'
 Plug 'sheerun/vim-polyglot'                             " mandatory
 Plug 'Raimondi/delimitMate'                             " jump c-g g or just repeat the action
 Plug 'preservim/nerdtree'
@@ -31,7 +32,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/loremipsum'
-Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-scripts/ReplaceWithRegister'
 " Plug 'vim-scripts/zoom.vim'
 Plug 'kana/vim-textobj-user'
