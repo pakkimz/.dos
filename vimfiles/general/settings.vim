@@ -25,6 +25,7 @@ set wildmode=full																				" just use regular wildmode
 set nostartofline                                       " sometimes cursor jumping back
 set noexpandtab
 set hlsearch
+set incsearch																						" highlighting word when search '/'
 set confirm																							" ask to save buffer
 set autowrite		                                        " automatically save before commands like :next and :make
 set complete-=i                                         " get rid system include in auto completion
