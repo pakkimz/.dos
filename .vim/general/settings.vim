@@ -44,13 +44,12 @@ set viminfo='20,\"100,s10,h                             " dont store more than 1
 set undodir^=C:/Users/house/.vim/.vim/tmp/undo
 set directory=C:/Users/house/.vim/.vim/tmp/swap
 set backupdir=C:/Users/house/.vim/.vim/tmp/backup
-" set dictionary=C:/Users/house/.vim/dict/words				"	<c-x><c-k>
+set dictionary=C:/Users/house/.vim/dict/words				"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
 set backspace=indent,eol,start													" set backspace to delete normally
 set hidden																							" moving buffer without saving it
 set wildcharm=<C-z>                                     " make mru and buffer working
 set virtualedit=block																		" block selection in visual mode
 set whichwrap+=<,>,h,l,[,]
-" set completeopt=menu,preview
-set completeopt=menuone,noinsert
 set belloff=all
+" set completeopt=menuone,noinsert

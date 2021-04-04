@@ -17,9 +17,9 @@ call plug#begin('C:\Users\house\vimfiles\plugged\')
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }      " sudo xbps-install ctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
-Plug 'pakkimz/AutoComplPop'
 Plug 'sheerun/vim-polyglot'                             " mandatory
 Plug 'Raimondi/delimitMate'                             " jump c-g g or just repeat the action
+Plug 'pakkimz/AutoComplPop'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdtree-project-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
