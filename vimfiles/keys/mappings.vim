@@ -82,9 +82,10 @@ nnoremap <leader>a :Ag!<space>
 nnoremap <leader>A :AgFile!<space>
 nnoremap <leader>e :e<Space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>c :cd<Space>
+nnoremap <leader>C :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>f :find<Space>
 nnoremap <leader>s :saveas<Space>
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " mru and buffer
 nnoremap <leader>b :b <C-z>
