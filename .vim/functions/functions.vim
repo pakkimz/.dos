@@ -24,9 +24,9 @@ let g:tern_show_signature_in_pum = 1
 " let g:qs_lazy_highlight = 1
 " let g:qs_max_chars = 300
 
-let delimitMateBackspace = 1
+" let delimitMateBackspace = 1
 let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
+let delimitMate_expand_space = 0
 let delimitMate_matchpairs = "(:),[:],{:}"
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }	" dont autostart
