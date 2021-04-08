@@ -42,10 +42,10 @@ set backup
 set writebackup																					" make backup before overwriting the current buffer
 set backupcopy=yes																			" overwrite the original backup file
 set viminfo='20,\"100,s10,h                             " dont store more than 100 lines, h: disable hlsearch, s10 max KB
-set undodir^=C:/Users/house/.vim/.vim/tmp/undo
-set directory=C:/Users/house/.vim/.vim/tmp/swap
-set backupdir=C:/Users/house/.vim/.vim/tmp/backup
-set dictionary=C:/Users/house/.vim/dict/words				"	<c-x><c-k>
+set undodir^=~/.vim/.vim/tmp/undo
+set directory=~/.vim/.vim/tmp/swap
+set backupdir=~/.vim/.vim/tmp/backup
+set dictionary=~/.vim/dict/words				"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
 set backspace=indent,eol,start													" set backspace to delete normally
 set hidden																							" moving buffer without saving it
