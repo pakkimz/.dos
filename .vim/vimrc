@@ -51,8 +51,8 @@ Plug 'ivalkeen/vim-simpledb'
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()
 
-source C:/Users/house/.vim/general/settings.vim
-source C:/Users/house/.vim/plugins/plugins.vim
-source C:/Users/house/.vim/functions/functions.vim
-source C:/Users/house/.vim/keys/mappings.vim
-source C:/Users/house/.vim/commands/commands.vim
+source ~/.vim/general/settings.vim
+source ~/.vim/plugins/plugins.vim
+source ~/.vim/functions/functions.vim
+source ~/.vim/keys/mappings.vim
+source ~/.vim/commands/commands.vim

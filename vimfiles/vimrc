@@ -60,8 +60,8 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()
 
-source C:\Users\house\vimfiles\general\settings.vim
-source C:\Users\house\vimfiles\plugins\plugins.vim
-source C:\Users\house\vimfiles\functions\functions.vim
-source C:\Users\house\vimfiles\keys\mappings.vim
-source C:\Users\house\vimfiles\commands\commands.vim
+source ~\vimfiles\general\settings.vim
+source ~\vimfiles\plugins\plugins.vim
+source ~\vimfiles\functions\functions.vim
+source ~\vimfiles\keys\mappings.vim
+source ~\vimfiles\commands\commands.vim
