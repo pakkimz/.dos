@@ -55,7 +55,7 @@ Plug 'tpope/vim-repeat'                                   " put this on the last
 " Plug 'ivalkeen/vim-simpledb'
 " Plug 'gregsexton/MatchTag'
 Plug 'ap/vim-css-color'
-" Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
+Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()

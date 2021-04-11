@@ -35,9 +35,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
-" let g:clang_auto = 0
-" let g:clang_c_completeopt = 'menu'
-" let g:clang_cpp_completeopt = 'menu'
-" let g:clang_check_syntax_auto = 0
-" let g:clang_enable_format_command = 0
-" let g:clang_diagsopt = ''
+let g:clang_auto = 1
+let g:clang_c_completeopt = 'menuone,noinsert'
+let g:clang_cpp_completeopt = 'menuone,noinsert'
+let g:clang_check_syntax_auto = 0
+let g:clang_enable_format_command = 0
+let g:clang_diagsopt = ''
