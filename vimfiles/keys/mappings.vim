@@ -76,7 +76,7 @@ nnoremap <silent><leader>q :q<CR>
 nnoremap <silent><leader>Q :qa!<CR>
 nnoremap <silent><leader>r :bd<CR>
 nnoremap <silent><leader>R :bw!<CR>
-nnoremap <silent><leader>o :%bd\|e#\|bd#<CR>
+" nnoremap <silent><leader>o :%bd\|e#\|bd#<CR>
 nnoremap <silent><leader>O :%bd!\|e#\|bd!#<CR>
 nnoremap <leader>a :Ag!<space>
 nnoremap <leader>A :AgFile!<space>
