@@ -1,5 +1,4 @@
 colorscheme gummybears
-" colorscheme schellar
 
 " change cursor shape in different mode
 let &t_SI = "\<Esc>[6 q"
@@ -20,9 +19,6 @@ let g:tern_show_signature_in_pum = 1
 
 " let g:buffergator_viewport_split_policy = "B"
 " let g:buffergator_split_size = 10
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" let g:qs_lazy_highlight = 1
-" let g:qs_max_chars = 300
 
 " let delimitMateBackspace = 1
 let delimitMate_expand_cr = 1
