@@ -13,7 +13,6 @@ syntax sync minlines=256
 filetype plugin indent on                               " all in one line
 
 call plug#begin('~\vimfiles\plugged\')
-" Plug 'igungor/schellar'
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }      " sudo xbps-install ctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
@@ -30,9 +29,6 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'romainl/vim-tinyMRU'
-" Plug 'henrik/vim-indexed-search'
-" Plug 'unblevable/quick-scope'
-" Plug 'PeterRincker/vim-searchlight'
 " Plug 'jeetsukumaran/vim-buffergator'                    " leader-b for for buffer leader-t for tab
 Plug 'vim-scripts/zoom.vim'
 Plug 'vim-scripts/loremipsum'
