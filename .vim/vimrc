@@ -27,6 +27,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'christoomey/vim-titlecase'
+Plug 'junegunn/vim-easy-align'
 Plug 'tommcdo/vim-exchange'															  " exchange word cxiw,cxx,X,cxc
 Plug 'wellle/targets.vim'																  " more powerful ci) ...
 Plug 'lfilho/cosco.vim'																	  " alt+;

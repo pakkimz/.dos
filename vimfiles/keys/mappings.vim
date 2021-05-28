@@ -124,6 +124,10 @@ nnoremap <silent><F10> :DelimitMateSwitch<CR>
 " tagbar
 nnoremap <silent><F8> :TagbarToggle<CR>
 
+" vim easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " vim cosco
 nnoremap <silent> <A-;> :CommaOrSemiColon<CR>
 inoremap <silent> <A-;> <esc>:CommaOrSemiColon<CR>a
