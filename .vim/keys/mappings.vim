@@ -37,6 +37,8 @@ cnoremap <C-j> <C-n>
 " intuitive moving buffer
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprevious<CR>
+nnoremap <A-l> :tabnext<CR>
+nnoremap <A-h> :tabprevious<CR>
 
 " add one space
 nnoremap [s i<space><esc>l
@@ -86,6 +88,7 @@ nnoremap <leader>c :cd<Space>
 nnoremap <leader>C :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>f :find<Space>
 nnoremap <leader>s :saveas<Space>
+nnoremap <leader>t :tabnew<CR>
 
 " mru and buffer
 nnoremap <leader>b :b <C-z>
