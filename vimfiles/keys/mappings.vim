@@ -88,7 +88,8 @@ nnoremap <leader>c :cd<Space>
 nnoremap <leader>C :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>f :find<Space>
 nnoremap <leader>s :saveas<Space>
-nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>t :tabnew<Space>
+nnoremap <leader>T :tabnew<CR>
 
 " mru and buffer
 nnoremap <leader>b :b <C-z>
