@@ -14,16 +14,18 @@ set softtabstop=2
 set shiftwidth=2
 set smarttab																						" tab in insert mode use shiftwidth instead of softtabstop
 set shiftround																					" >> always same as tab size even after inserting space
+set noexpandtab
+set backspace=indent,eol,start													" set backspace to delete normally
 set textwidth=106
 set autoindent
 set smartindent
 set breakindent
 set linebreak																						" wrap word
+set linespace=2                                         " only works in gui
 set mouse=a
 set wildmenu
 set wildmode=full																				" just use regular wildmode
 set nostartofline                                       " sometimes cursor jumping back
-set noexpandtab
 set hlsearch
 set incsearch																						" highlighting word when search '/'
 set confirm																							" ask to save buffer
@@ -42,12 +44,11 @@ set backup
 set writebackup																					" make backup before overwriting the current buffer
 set backupcopy=yes																			" overwrite the original backup file
 set viminfo='20,\"100,s10,h                             " dont store more than 100 lines, h: disable hlsearch, s10 max KB
-set undodir^=~/.vim/.vim/tmp/undo
-set directory=~/.vim/.vim/tmp/swap
-set backupdir=~/.vim/.vim/tmp/backup
-set dictionary=~/.vim/dict/words				"	<c-x><c-k>
+set undodir^=~\vimfiles\.vim\tmp\undo
+set directory=~\vimfiles\.vim\tmp\swap
+set backupdir=~\vimfiles\.vim\tmp\backup
+set dictionary=~\vimfiles\dict\words										"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
-set backspace=indent,eol,start													" set backspace to delete normally
 set hidden																							" moving buffer without saving it
 set wildcharm=<C-z>                                     " make mru and buffer working
 set virtualedit=block																		" block selection in visual mode
