@@ -1,5 +1,5 @@
-" set guifont=FiraCode\ NF:h10
-set guifont=CaskaydiaCove\ NF:h10
+" set guifont=CaskaydiaCove\ NF:h10
+set guifont=Hack\ NF:h10
 set guicursor+=a:blinkon0
 set guioptions-=m
 set guioptions-=T

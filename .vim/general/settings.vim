@@ -44,10 +44,10 @@ set backup
 set writebackup																					" make backup before overwriting the current buffer
 set backupcopy=yes																			" overwrite the original backup file
 set viminfo='20,\"100,s10,h                             " dont store more than 100 lines, h: disable hlsearch, s10 max KB
-set undodir^=~\vimfiles\.vim\tmp\undo
-set directory=~\vimfiles\.vim\tmp\swap
-set backupdir=~\vimfiles\.vim\tmp\backup
-set dictionary=~\vimfiles\dict\words										"	<c-x><c-k>
+set undodir^=~/.vim/.vim/tmp/undo
+set directory=~/.vim/.vim/tmp/swap
+set backupdir=~/.vim/.vim/tmp/backup
+set dictionary=~/.vim/dict/words												"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
 set hidden																							" moving buffer without saving it
 set wildcharm=<C-z>                                     " make mru and buffer working
