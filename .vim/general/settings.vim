@@ -25,6 +25,9 @@ set linespace=2                                         " only works in gui
 set mouse=a
 set wildmenu
 set wildmode=full																				" just use regular wildmode
+set wildcharm=<C-z>                                     " make mru and buffer working
+set whichwrap+=<,>,h,l,[,]
+set virtualedit=block																		" block selection in visual mode
 set nostartofline                                       " sometimes cursor jumping back
 set hlsearch
 set incsearch																						" highlighting word when search '/'
@@ -50,8 +53,5 @@ set backupdir=~/.vim/.vim/tmp/backup
 set dictionary=~/.vim/dict/words												"	<c-x><c-k>
 set path=.,**																						" :find current and all the children
 set hidden																							" moving buffer without saving it
-set wildcharm=<C-z>                                     " make mru and buffer working
-set virtualedit=block																		" block selection in visual mode
-set whichwrap+=<,>,h,l,[,]
 set belloff=all
 set completeopt=menuone,noinsert
