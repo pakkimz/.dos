@@ -53,6 +53,7 @@ Plug 'tpope/vim-repeat'                                   " put this on the last
 Plug 'ap/vim-css-color'
 Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
+Plug 'shawncplus/phpcomplete.vim', { 'for' : 'php' }
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()
 
