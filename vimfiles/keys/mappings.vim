@@ -144,6 +144,7 @@ nnoremap <silent><C-s> :<C-u>call ToggleErrors()<CR>
 nnoremap gn :e .<CR>
 nnoremap gN :e ~/<CR>
 nnoremap gl :NERDTreeProjectLoadFromCWD<CR><C-w>h
+nnoremap <silent><F2> :NERDTreeFind<CR>
 nnoremap <silent><C-n> :NERDTreeToggle . <Bar>wincmd p<Bar><CR>
 nnoremap <silent><leader>d :bp<cr>:bd #<cr>
 
