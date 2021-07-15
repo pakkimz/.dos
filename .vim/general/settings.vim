@@ -55,3 +55,5 @@ set path=.,**																						" :find current and all the children
 set hidden																							" moving buffer without saving it
 set belloff=all
 set completeopt=menuone,noinsert
+set ttyfast
+set lazyredraw
