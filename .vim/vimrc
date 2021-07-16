@@ -5,7 +5,7 @@ filetype plugin indent on																	" all in one line
 
 call plug#begin('~/.vim/plugged/')
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }				" sudo xbps-install ctags
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }				" need ctags / npm jsctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
 Plug 'sheerun/vim-polyglot'																" mandatory
 Plug 'Raimondi/delimitMate'																" jump c-g g or just repeat the action
