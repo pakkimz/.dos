@@ -20,6 +20,3 @@ autocmd BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview
 autocmd BufWrite * :call StripTrailingWhitespaces()
 autocmd BufWrite * :call StripTrailingFunc()
 autocmd BufWrite * :call StripTrailingEOL()
-
-" set ejs file as html
-autocmd BufRead,BufNewFile *.ejs set filetype=html
