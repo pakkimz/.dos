@@ -20,11 +20,6 @@ let g:tern_show_signature_in_pum = 1
 " let g:buffergator_viewport_split_policy = "B"
 " let g:buffergator_split_size = 10
 
-" let delimitMateBackspace = 0
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 0
-let delimitMate_matchpairs = "(:),[:],{:}"
-
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }	" dont autostart
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
