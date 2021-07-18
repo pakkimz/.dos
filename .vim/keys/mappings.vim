@@ -5,7 +5,10 @@ nnoremap g. `.
 nnoremap gV `[v`]
 
 " make Y yank to end of line (like D or C)
-nnoremap Y y$
+nnoremap Y yg_
+
+" no more no less
+nnoremap V vg_
 
 " say Nop for q and Q
 noremap q <Nop>
