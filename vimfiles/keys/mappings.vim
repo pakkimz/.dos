@@ -52,6 +52,10 @@ nnoremap zh zH
 vnoremap < <gv
 vnoremap > >gv
 
+" make search use normal regex
+nnoremap / /\v
+vnoremap / /\v
+
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
