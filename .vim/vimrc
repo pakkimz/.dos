@@ -8,8 +8,8 @@ Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }				" need ctags / npm jsctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
 Plug 'sheerun/vim-polyglot'																" mandatory
+Plug 'Raimondi/delimitMate'                               " C-g g to escape
 Plug 'pakkimz/AutoComplPop'
-Plug 'rstacruz/vim-closer'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdtree-project-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
