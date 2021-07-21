@@ -17,8 +17,7 @@ set shiftround																					" >> always same as tab size even after inser
 set noexpandtab
 set backspace=indent,eol,start													" set backspace to delete normally
 set textwidth=106
-set autoindent
-set smartindent
+set autoindent                                          " no use smartindent
 set breakindent
 set linebreak																						" wrap word
 set linespace=2                                         " only works in gui

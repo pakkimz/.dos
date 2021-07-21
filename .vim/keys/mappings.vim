@@ -7,10 +7,6 @@ nnoremap gV `[v`]
 " make Y yank to end of line (like D or C)
 nnoremap Y yg_
 
-" consistent functionality
-nnoremap V vg_
-nnoremap vv V
-
 " say Nop for q and Q
 noremap q <Nop>
 noremap Q <Nop>
