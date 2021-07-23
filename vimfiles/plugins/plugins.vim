@@ -7,13 +7,18 @@ colorscheme gummybears
 
 let mapleader = ' '
 let g:move_map_keys = 0                                 " disable other keys vim-move and just use my mapping
-let g:NERDTreeWinSize = 25
 let g:highlightedyank_highlight_duration = 100
 let g:comfortable_motion_no_default_key_mappings = 1    " disable default mapping
+
+let g:NERDTreeWinSize = 25
+let g:NERDTreeShowHidden = 1
+
 let g:tagbar_sort = 0                                   " order tags based on file order, don't sort alphabetically
 let g:tagbar_width = 25
+
 " let g:ag_highlight = 1
 let g:ag_mapping_message = 0
+
 let g:tern_show_signature_in_pum = 1
 " let g:tern_show_argument_hints = "on_hold"
 
