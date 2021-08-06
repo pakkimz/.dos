@@ -30,6 +30,8 @@ set virtualedit=block																		" block selection in visual mode
 set nostartofline                                       " sometimes cursor jumping back
 set hlsearch
 set incsearch																						" highlighting word when search '/'
+set ignorecase
+set smartcase
 set confirm																							" ask to save buffer
 set autowrite		                                        " automatically save before commands like :next and :make
 set complete-=i                                         " get rid system include in auto completion
