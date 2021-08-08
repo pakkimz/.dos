@@ -5,6 +5,11 @@ colorscheme gummybears
 " let &t_SR = "\<Esc>[4 q"
 " let &t_EI = "\<Esc>[2 q"
 
+let g:transparency_config = {
+                  \  'active'   : 95,
+                  \  'inactive' : 95
+                  \ }
+
 let mapleader = ' '
 let g:move_map_keys = 0                                 " disable other keys vim-move and just use my mapping
 let g:highlightedyank_highlight_duration = 100
