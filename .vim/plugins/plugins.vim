@@ -19,9 +19,6 @@ let g:tagbar_width = 25
 " let g:ag_highlight = 1
 let g:ag_mapping_message = 0
 
-let g:tern_show_signature_in_pum = 1
-" let g:tern_show_argument_hints = "on_hold"
-
 " let g:buffergator_viewport_split_policy = "B"
 " let g:buffergator_split_size = 10
 
@@ -42,3 +39,10 @@ let g:syntastic_javascript_eslint_exec = 'eslint_d'
 " let g:clang_enable_format_command = 0
 " let g:clang_c_completeopt = 'menuone,noinsert'
 " let g:clang_cpp_completeopt = 'menuone,noinsert'
+
+" let g:tern_request_timeout = 1
+" let g:tern_request_timeout = 6000
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = [" — persistent"]
+" let g:tern_show_signature_in_pum = 1
+" let g:tern_show_argument_hints = "on_hold"
