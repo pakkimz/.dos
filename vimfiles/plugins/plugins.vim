@@ -48,6 +48,6 @@ let g:clang_cpp_completeopt = 'menuone,noinsert'
 let g:tern_request_timeout = 1
 let g:tern_request_timeout = 6000
 let g:tern#command = ["tern"]
-let g:tern#arguments = [" — persistent"]
+let g:tern#arguments = ["--persistent"]
 let g:tern_show_signature_in_pum = 1
 " let g:tern_show_argument_hints = "on_hold"
