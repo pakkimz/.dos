@@ -9,6 +9,7 @@ let mapleader = ' '
 let g:move_map_keys = 0                                 " disable other keys vim-move and just use my mapping
 let g:highlightedyank_highlight_duration = 100
 let g:comfortable_motion_no_default_key_mappings = 1    " disable default mapping
+let g:omni_sql_default_compl_type = 'syntax'
 
 let g:NERDTreeWinSize = 25
 let g:NERDTreeShowHidden = 1
