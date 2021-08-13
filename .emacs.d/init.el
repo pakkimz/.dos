@@ -8,6 +8,9 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
+(setq-default frame-title-format '("%f"))
+(setq-default mode-line-format nil)
+
 (set-frame-font "Hack NF" nil t)
 (global-display-line-numbers-mode)
 
