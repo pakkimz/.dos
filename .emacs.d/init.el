@@ -1,11 +1,44 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (evil-mode 1)
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(95 95))
+(add-to-list 'default-frame-alist '(alpha 95 95))
+
+(set-frame-font "Hack NF" nil t)
+(global-display-line-numbers-mode)
+
+(blink-cursor-mode 0)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode nil)
+(setq show-help-function nil)
+
+(setq initial-scratch-message nil)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+(setq inhibit-startup-screen t)
+(setq visible-bell 1)
+
+;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+
+;; Removes *scratch* from buffer after the mode has been set.
+(defun remove-scratch-buffer ()
+  (if (get-buffer "*scratch*")
+      (kill-buffer "*scratch*")))
+(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
+
+;; backup and autosave directories
+(setq backup-by-copying t)
+(setq temporary-file-directory "~/.emacs.d/.tmp/")
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (electric-pair-mode 1)
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
@@ -45,31 +78,6 @@
 ; 						(flycheck-mode t)
 ; 						(when (executable-find "eslint")
 ; 							(flycheck-select-checker 'javascript-eslint))))
-
-;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(95 95))
-(add-to-list 'default-frame-alist '(alpha 95 95))
-
-(set-frame-font "Hack NF" nil t)
-(global-display-line-numbers-mode)
-
-(blink-cursor-mode 0)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message nil)
-(setq visible-bell 1)
-
-;; backup and autosave directories
-(setq backup-by-copying t)
-(setq temporary-file-directory "~/.emacs.d/.tmp/")
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;; indentation
 (setq js-indent-level 2)
