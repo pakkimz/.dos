@@ -6,7 +6,6 @@
 (package-initialize)
 
 (evil-mode 1)
-(global-set-key [f2] 'neotree-toggle)
 
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
@@ -78,6 +77,14 @@
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c")))
+
+(global-set-key [f2] 'neotree-toggle)
+(add-hook 'neotree-mode-hook
+      (lambda ()
+        (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+        (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
+        (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
+        (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 ; (load-theme 'modus-operandit t)            ; Light theme
 (load-theme 'modus-vivendi t)             ; Dark theme
