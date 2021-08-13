@@ -14,7 +14,7 @@
 (define-key ac-complete-mode-map "\C-k" 'ac-previous)
 (define-key ac-complete-mode-map "\C-y" 'ac-complete)
 (define-key ac-complete-mode-map "\t" 'ac-complete)
-(define-key ac-complete-mode-map "\C-e" nil)
+(define-key ac-complete-mode-map "\C-e" 'ac-stop)
 
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -29,11 +29,11 @@
 (setq js2-mode-show-parse-errors nil)
 (setq js2-mode-show-strict-warnings nil)
 ;; Use eslint to check syntax
-(add-hook 'js2-mode-hook
-					(defun my-js2-mode-setup ()
-						(flycheck-mode t)
-						(when (executable-find "eslint")
-							(flycheck-select-checker 'javascript-eslint))))
+; (add-hook 'js2-mode-hook
+; 					(defun my-js2-mode-setup ()
+; 						(flycheck-mode t)
+; 						(when (executable-find "eslint")
+; 							(flycheck-select-checker 'javascript-eslint))))
 
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
