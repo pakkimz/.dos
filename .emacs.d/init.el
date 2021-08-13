@@ -48,7 +48,12 @@
 (electric-pair-mode 1)
 (global-display-line-numbers-mode)
 
-;; Indentation
+;; backup and autosave directories
+(setq temporary-file-directory "~/.emacs.d/.tmp/")
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; indentation
 (setq js-indent-level 2)
 (setq-default c-basic-offset 2)
 (setq c-basic-offset 2)
@@ -66,7 +71,7 @@
 (global-set-key (kbd "C-l") 'next-buffer)
 (global-set-key (kbd "C-h") 'previous-buffer)
 
-;; Map single control to ESC
+;; map single control to ESC
 (with-eval-after-load 'evil-maps
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
