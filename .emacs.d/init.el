@@ -6,6 +6,7 @@
 (package-initialize)
 
 (evil-mode 1)
+(global-set-key [f2] 'neotree-toggle)
 
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
@@ -80,3 +81,16 @@
 
 ; (load-theme 'modus-operandit t)            ; Light theme
 (load-theme 'modus-vivendi t)             ; Dark theme
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+	 '(neotree tern-auto-complete php-mode modus-themes js2-mode flycheck evil)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
