@@ -5,12 +5,39 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(evil-mode 1)
+
+(global-auto-complete-mode t)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(define-key ac-complete-mode-map "\C-j" 'ac-next)
+(define-key ac-complete-mode-map "\C-k" 'ac-previous)
+(define-key ac-complete-mode-map "\C-y" 'ac-complete)
+(define-key ac-complete-mode-map "\t" 'ac-complete)
+(define-key ac-complete-mode-map "\C-e" nil)
+
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook
+					(lambda ()
+						(tern-mode t)))
+(eval-after-load 'tern
+								 '(progn
+										(require 'tern-auto-complete)
+										(tern-ac-setup)))
+;; Turn off js2 mode errors & warnings (we lean on eslint/standard)
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+;; Use eslint to check syntax
+(add-hook 'js2-mode-hook
+					(defun my-js2-mode-setup ()
+						(flycheck-mode t)
+						(when (executable-find "eslint")
+							(flycheck-select-checker 'javascript-eslint))))
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
-
-(require 'evil)
-(evil-mode 1)
 
 (setq visible-bell 1)
 (tool-bar-mode -1)
@@ -21,6 +48,7 @@
 (electric-pair-mode 1)
 (global-display-line-numbers-mode)
 
+;; Indentation
 (setq js-indent-level 2)
 (setq-default c-basic-offset 2)
 (setq c-basic-offset 2)
@@ -45,19 +73,5 @@
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c")))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-	 '("0568a5426239e65aab5e7c48fa1abde81130a87ddf7f942613bf5e13bf79686b" default))
- '(package-selected-packages '(php-mode smartparens modus-themes evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-; (load-theme 'modus-operandi)            ; Light theme
-(load-theme 'modus-vivendi)             ; Dark theme
+; (load-theme 'modus-operandit t)            ; Light theme
+(load-theme 'modus-vivendi t)             ; Dark theme
