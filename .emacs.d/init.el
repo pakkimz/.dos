@@ -7,6 +7,17 @@
 
 (evil-mode 1)
 
+(electric-pair-mode 1)
+; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+;; disable pair in <
+(setq electric-pair-inhibit-predicate
+      `(lambda (c)
+         (if (char-equal c ?\<) t (,electric-pair-inhibit-predicate c))))
+;; disable indent on html
+(defun remove-electric-indent-mode ()
+  (electric-indent-local-mode -1))
+(add-hook 'html-mode-hook 'remove-electric-indent-mode)
+
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
@@ -39,23 +50,23 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
+(set-frame-font "Hack NF" nil t)
+(global-display-line-numbers-mode)
+
+(blink-cursor-mode 0)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
 (setq visible-bell 1)
-(blink-cursor-mode 0)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
-(tooltip-mode -1)
-
-(set-frame-font "Hack NF" nil t)
-(global-display-line-numbers-mode)
-
-(electric-pair-mode 1)
 
 ;; backup and autosave directories
+(setq backup-by-copying t)
 (setq temporary-file-directory "~/.emacs.d/.tmp/")
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
@@ -83,7 +94,8 @@
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
-                      (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c")))
+                      (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c"))
+                      (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
 (global-set-key [f2] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
@@ -95,16 +107,3 @@
 
 ; (load-theme 'modus-operandit t)            ; Light theme
 (load-theme 'modus-vivendi t)             ; Dark theme
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-	 '(web-mode neotree tern-auto-complete php-mode modus-themes js2-mode flycheck evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
