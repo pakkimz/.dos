@@ -105,7 +105,6 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-enable-auto-closing t)
-(setq web-mode-enable-current-element-highlight t)
 
 ;; Omnicomplete for html and css
 ; (require 'auto-complete-config)
