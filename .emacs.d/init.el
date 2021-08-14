@@ -148,5 +148,4 @@
         (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
         (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
-; (load-theme 'modus-operandi t)            ; Light theme
-(load-theme 'modus-vivendi t)             ; Dark theme
+(load-theme 'jbeans t)
