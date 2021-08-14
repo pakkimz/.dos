@@ -27,6 +27,9 @@
 (setq inhibit-startup-screen t)
 (setq visible-bell 1)
 
+;; Removes trailing whitespace when save
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+
 ;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
@@ -37,7 +40,7 @@
       (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
-;; backup and autosave directories
+;; Backup and autosave directories
 (setq backup-by-copying t)
 (setq temporary-file-directory "~/.emacs.d/.tmp/")
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -45,11 +48,11 @@
 
 (electric-pair-mode 1)
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-;; disable pair in <
+;; Disable pair in <
 (setq electric-pair-inhibit-predicate
       `(lambda (c)
          (if (char-equal c ?\<) t (,electric-pair-inhibit-predicate c))))
-;; disable indent on html
+;; Disable indent on html
 (defun remove-electric-indent-mode ()
   (electric-indent-local-mode -1))
 (add-hook 'html-mode-hook 'remove-electric-indent-mode)
@@ -82,7 +85,7 @@
 ; 						(when (executable-find "eslint")
 ; 							(flycheck-select-checker 'javascript-eslint))))
 
-;; indentation
+;; Indentation
 (setq js-indent-level 2)
 (setq-default c-basic-offset 2)
 (setq c-basic-offset 2)
@@ -92,15 +95,22 @@
 (add-to-list 'auto-mode-alist '("\\.php[345]?$" . php-mode))
 (add-hook 'php-mode-hook #'(lambda() (setq c-basic-offset 2)))
 
-;; set leader key in normal state
+;; Set leader key in normal state
 (evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key 'normal 'global (kbd "<leader>b") 'ibuffer)
 (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>r") (kbd "C-x K RET"))
 (evil-define-key 'normal 'global (kbd "<leader>q") (kbd "C-x C-c"))
+
+;; Recent file or mru
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(evil-define-key 'normal 'global (kbd "<leader>m") 'recentf-open-files)
+
 (global-set-key (kbd "C-l") 'next-buffer)
 (global-set-key (kbd "C-h") 'previous-buffer)
 
-;; map single control to ESC
+;; Map single control to ESC
 (with-eval-after-load 'evil-maps
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
@@ -118,5 +128,5 @@
         (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
         (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
-; (load-theme 'modus-operandit t)            ; Light theme
+; (load-theme 'modus-operandi t)            ; Light theme
 (load-theme 'modus-vivendi t)             ; Dark theme
