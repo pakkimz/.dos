@@ -3,6 +3,8 @@
 (package-initialize)
 
 (evil-mode 1)
+(evil-commentary-mode)
+(global-evil-surround-mode 1)
 
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
@@ -13,6 +15,7 @@
 
 (set-frame-font "Hack NF" nil t)
 (global-display-line-numbers-mode)
+(global-visual-line-mode t)
 
 ;; Indentation
 (setq js-indent-level 2)
@@ -138,7 +141,9 @@
                       (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c"))
                       (define-key evil-insert-state-map "\C-a" 'beginning-of-line)
                       (define-key evil-insert-state-map "\C-e" 'end-of-line)
-                      (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
+                      (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+                      (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+                      (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line))
 
 (global-set-key [f2] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
