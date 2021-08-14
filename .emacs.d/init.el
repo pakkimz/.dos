@@ -50,6 +50,13 @@
       (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
+;; Removes *Completions* from buffer after you've opened a file.
+(add-hook 'minibuffer-exit-hook
+          '(lambda ()
+             (let ((buffer "*Completions*"))
+               (and (get-buffer buffer)
+                    (kill-buffer buffer)))))
+
 ;; Backup and autosave directories
 (setq backup-by-copying t)
 (setq temporary-file-directory "~/.emacs.d/.tmp/")
@@ -118,20 +125,24 @@
 ;   '(("css"  . (ac-source-css-property))
 ;     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
+;; Switch between split with meta and arrow
+(windmove-default-keybindings 'meta)
+
+;; Switch between buffer
+(global-set-key (kbd "C-l") 'next-buffer)
+(global-set-key (kbd "C-h") 'previous-buffer)
+
 ;; Set leader key in normal state
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-define-key 'normal 'global (kbd "<leader>b") 'ibuffer)
 (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>r") (kbd "C-x K RET"))
-(evil-define-key 'normal 'global (kbd "<leader>q") (kbd "C-x C-c"))
+(evil-define-key 'normal 'global (kbd "<leader>r") 'kill-this-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>q") 'save-buffers-kill-terminal)
 
 ;; Recent file or mru
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (evil-define-key 'normal 'global (kbd "<leader>m") 'recentf-open-files)
-
-(global-set-key (kbd "C-l") 'next-buffer)
-(global-set-key (kbd "C-h") 'previous-buffer)
 
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
