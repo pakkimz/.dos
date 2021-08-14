@@ -9,7 +9,7 @@
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
 (setq-default frame-title-format '("%f"))
-(setq-default mode-line-format nil)
+; (setq-default mode-line-format nil)
 
 (set-frame-font "Hack NF" nil t)
 (global-display-line-numbers-mode)
@@ -106,6 +106,8 @@
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c"))
+                      (define-key evil-insert-state-map "\C-a" 'beginning-of-line)
+                      (define-key evil-insert-state-map "\C-e" 'end-of-line)
                       (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
 (global-set-key [f2] 'neotree-toggle)
