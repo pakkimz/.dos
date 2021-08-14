@@ -14,6 +14,13 @@
 (set-frame-font "Hack NF" nil t)
 (global-display-line-numbers-mode)
 
+;; Indentation
+(setq js-indent-level 2)
+(setq-default c-basic-offset 2)
+(setq c-basic-offset 2)
+(setq-default tab-width 2)
+(setq-default c-basic-indent 2)
+
 (blink-cursor-mode 0)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -46,6 +53,7 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Auto close pair
 (electric-pair-mode 1)
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 ;; Disable pair in <
@@ -57,6 +65,7 @@
   (electric-indent-local-mode -1))
 (add-hook 'html-mode-hook 'remove-electric-indent-mode)
 
+;; Autocompletion
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
@@ -66,6 +75,7 @@
 (define-key ac-complete-mode-map "\t" 'ac-complete)
 (define-key ac-complete-mode-map "\C-e" 'ac-stop)
 
+;; Tern js
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook
@@ -85,15 +95,26 @@
 ; 						(when (executable-find "eslint")
 ; 							(flycheck-select-checker 'javascript-eslint))))
 
-;; Indentation
-(setq js-indent-level 2)
-(setq-default c-basic-offset 2)
-(setq c-basic-offset 2)
-(setq-default tab-width 2)
-(setq-default c-basic-indent 2)
-(autoload 'php-mode "php-mode.el" "Php mode." t)
-(add-to-list 'auto-mode-alist '("\\.php[345]?$" . php-mode))
-(add-hook 'php-mode-hook #'(lambda() (setq c-basic-offset 2)))
+;; Web mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-enable-auto-closing t)
+(setq web-mode-enable-current-element-highlight t)
+
+;; Omnicomplete for html and css
+; (require 'auto-complete-config)
+; (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20201213.1255/dict/")
+; (ac-config-default)
+; (add-to-list 'ac-modes 'web-mode)
+; (setq web-mode-ac-sources-alist
+;   '(("css"  . (ac-source-css-property))
+;     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
 ;; Set leader key in normal state
 (evil-set-leader 'normal (kbd "SPC"))
