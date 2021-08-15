@@ -40,6 +40,9 @@
 ;; Removes trailing whitespace when save
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
+;; No more typing the whole yes or no. Just y or n will do.
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
