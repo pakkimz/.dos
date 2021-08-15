@@ -132,8 +132,23 @@
 (windmove-default-keybindings 'meta)
 
 ;; Switch between buffer
-(global-set-key (kbd "C-l") 'next-buffer)
-(global-set-key (kbd "C-h") 'previous-buffer)
+(global-set-key [(control l)] 'next-buffer)
+(global-set-key [(control h)] 'previous-buffer)
+
+;; Move line up and down
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+(global-set-key [(control shift up)]  'move-line-up)
+(global-set-key [(control shift down)]  'move-line-down)
 
 ;; Set leader key in normal state
 (evil-set-leader 'normal (kbd "SPC"))
@@ -147,6 +162,9 @@
 (setq recentf-max-menu-items 25)
 (evil-define-key 'normal 'global (kbd "<leader>m") 'recentf-open-files)
 
+;; Use undo-fu for system undo
+(setq evil-undo-system 'undo-fu)
+
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
@@ -157,7 +175,9 @@
                       (define-key evil-insert-state-map "\C-e" 'end-of-line)
                       (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
                       (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-                      (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line))
+                      (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+                      (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
+                      (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 (global-set-key [f2] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
