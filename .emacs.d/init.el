@@ -10,6 +10,7 @@
 ; (setq-default mode-line-format nil)
 
 (set-frame-font "Hack NF" nil t)
+(show-paren-mode t)
 (global-display-line-numbers-mode)
 (global-visual-line-mode t)
 
@@ -106,7 +107,9 @@
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-enable-auto-closing t)
 
-;; Tern js
+;; Disable tern argument
+(setq-default tern-update-argument-hints-async t)
+;; Tern autocompletion
 (add-hook 'web-mode-hook
           (lambda ()
             (tern-mode t)))
@@ -192,6 +195,7 @@
 
 ;; Neotree
 (global-set-key [f2] 'neotree-toggle)
+(setq-default neo-show-hidden-files t)
 (add-hook 'neotree-mode-hook
           (lambda ()
             (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
