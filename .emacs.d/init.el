@@ -75,6 +75,11 @@
 (electric-pair-mode 1)
 ;; Don't auto-indent
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+;; Auto close single-quote, backtic and comment
+(push '(?\' . ?\') electric-pair-pairs)
+(push '(?\' . ?\') electric-pair-text-pairs)
+(push '(?\` . ?\`) electric-pair-pairs)
+(push '(?\` . ?\`) electric-pair-text-pairs)
 ;; Disable pair in <
 (setq electric-pair-inhibit-predicate
       `(lambda (c)
