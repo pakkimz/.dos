@@ -110,22 +110,22 @@
 ;; Disable tern argument
 (setq-default tern-update-argument-hints-async t)
 ;; Tern autocompletion
-(add-hook 'web-mode-hook
-          (lambda ()
-            (tern-mode t)))
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
 (eval-after-load 'tern
                  '(progn
                     (require 'tern-auto-complete)
                     (tern-ac-setup)))
 
-;; Flycheck
-; (require 'flycheck)
-;; turn on flychecking globally
-; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; Flycheck active after command M-x flycheck-mode / global-flycheck-mode
+(require 'flycheck)
+(setq-default flycheck-temp-prefix ".flycheck")
+(setq flymake-no-changes-timeout nil)
+(setq flymake-start-syntax-check-on-newline nil)
+(setq flycheck-check-syntax-automatically '(save mode-enabled))
 ;; use eslint with web-mode for jsx files
-; (flycheck-add-mode 'javascript-eslint 'web-mode)
-;; customize flycheck temp file prefix
-; (setq-default flycheck-temp-prefix ".flycheck")
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+;; turn on flychecking globally when open file
+; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Omnicomplete for html and css
 ; (require 'auto-complete-config)
