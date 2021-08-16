@@ -158,6 +158,11 @@
 (global-set-key [(control shift up)]  'move-line-up)
 (global-set-key [(control shift down)]  'move-line-down)
 
+;; Close all buffer except this buffer
+(defun only-current-buffer ()
+  (interactive)
+  (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
+
 ;; Evil stuff
 (evil-mode 1)
 (evil-commentary-mode)
@@ -176,6 +181,7 @@
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
                       (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
+                      (define-key evil-normal-state-map (kbd "<leader>O") 'only-current-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>m") 'recentf-open-files)
                       (define-key evil-normal-state-map (kbd "<leader>b") 'ibuffer)
                       (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
