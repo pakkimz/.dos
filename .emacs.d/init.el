@@ -2,10 +2,6 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(evil-mode 1)
-(evil-commentary-mode)
-(global-evil-surround-mode 1)
-
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
@@ -105,7 +101,6 @@
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
@@ -160,23 +155,29 @@
 (global-set-key [(control shift up)]  'move-line-up)
 (global-set-key [(control shift down)]  'move-line-down)
 
+;; Evil stuff
+(evil-mode 1)
+(evil-commentary-mode)
+(global-evil-surround-mode 1)
+
 ;; Set leader key in normal state
 (evil-set-leader 'normal (kbd "SPC"))
-(evil-define-key 'normal 'global (kbd "<leader>b") 'ibuffer)
-(evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>r") 'kill-this-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>q") 'save-buffers-kill-terminal)
-
-;; Recent file or mru
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(evil-define-key 'normal 'global (kbd "<leader>m") 'recentf-open-files)
 
 ;; Use undo-fu for system undo
 (setq evil-undo-system 'undo-fu)
 
+;; Recent file or mru
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
+                      (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
+                      (define-key evil-normal-state-map (kbd "<leader>m") 'recentf-open-files)
+                      (define-key evil-normal-state-map (kbd "<leader>b") 'ibuffer)
+                      (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
+                      (define-key evil-normal-state-map (kbd "<leader>r") 'kill-this-buffer)
+                      (define-key evil-normal-state-map (kbd "<leader>q") 'save-buffers-kill-terminal)
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
@@ -189,6 +190,7 @@
                       (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
+;; Neotree
 (global-set-key [f2] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
           (lambda ()
