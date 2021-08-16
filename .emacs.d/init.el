@@ -51,7 +51,7 @@
 ;; Removes *scratch* from buffer after the mode has been set.
 (defun remove-scratch-buffer ()
   (if (get-buffer "*scratch*")
-      (kill-buffer "*scratch*")))
+    (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
 ;; Removes *Completions* from buffer after you've opened a file.
@@ -61,14 +61,19 @@
                (and (get-buffer buffer)
                     (kill-buffer buffer)))))
 
-;; Backup and autosave directories
-(setq backup-by-copying t)
-(setq temporary-file-directory "~/.emacs.d/.tmp/")
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+;; Disable backup and autosave directories
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
+;; Enable backup and autosave directories
+; (setq backup-by-copying t)
+; (setq temporary-file-directory "~/.emacs.d/.tmp/")
+; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+; (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;; Auto close pair
 (electric-pair-mode 1)
+;; Don't auto-indent
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 ;; Disable pair in <
 (setq electric-pair-inhibit-predicate
@@ -89,36 +94,35 @@
 (define-key ac-complete-mode-map "\t" 'ac-complete)
 (define-key ac-complete-mode-map "\C-e" 'ac-stop)
 
-;; Tern js
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js2-mode-hook
-					(lambda ()
-						(tern-mode t)))
-(eval-after-load 'tern
-								 '(progn
-										(require 'tern-auto-complete)
-										(tern-ac-setup)))
-;; Turn off js2 mode errors & warnings (we lean on eslint/standard)
-(setq js2-mode-show-parse-errors nil)
-(setq js2-mode-show-strict-warnings nil)
-;; Use eslint to check syntax
-; (add-hook 'js2-mode-hook
-; 					(defun my-js2-mode-setup ()
-; 						(flycheck-mode t)
-; 						(when (executable-find "eslint")
-; 							(flycheck-select-checker 'javascript-eslint))))
-
 ;; Web mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-enable-auto-closing t)
+
+;; Tern js
+(add-hook 'web-mode-hook
+          (lambda ()
+            (tern-mode t)))
+(eval-after-load 'tern
+                 '(progn
+                    (require 'tern-auto-complete)
+                    (tern-ac-setup)))
+
+;; Flycheck
+; (require 'flycheck)
+;; turn on flychecking globally
+; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; use eslint with web-mode for jsx files
+; (flycheck-add-mode 'javascript-eslint 'web-mode)
+;; customize flycheck temp file prefix
+; (setq-default flycheck-temp-prefix ".flycheck")
 
 ;; Omnicomplete for html and css
 ; (require 'auto-complete-config)
@@ -182,10 +186,10 @@
 
 (global-set-key [f2] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
-      (lambda ()
-        (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-        (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
-        (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
-        (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+          (lambda ()
+            (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+            (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
+            (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 (load-theme 'jbeans t)
