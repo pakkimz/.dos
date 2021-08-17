@@ -10,9 +10,9 @@
 ; (setq-default mode-line-format nil)
 
 (set-frame-font "Hack NF" nil t)
-(show-paren-mode t)
-(global-display-line-numbers-mode)
-(global-visual-line-mode t)
+(show-paren-mode t)                   ;; highlight match pair
+(global-display-line-numbers-mode)    ;; display number
+(global-visual-line-mode t)           ;; line wrap
 
 ;; Indentation
 (setq js-indent-level 2)
@@ -20,7 +20,7 @@
 (setq c-basic-offset 2)
 (setq-default tab-width 2)
 (setq-default c-basic-indent 2)
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)   ;; expandtab
 
 (blink-cursor-mode 0)
 (menu-bar-mode -1)
@@ -88,12 +88,15 @@
 
 ;; Autocompletion
 (global-auto-complete-mode t)
+(setq ac-auto-show-menu 0.0)    ;; don't delay
+(setq ac-use-quick-help nil)    ;; disable tooltip
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 (define-key ac-complete-mode-map "\C-j" 'ac-next)
 (define-key ac-complete-mode-map "\C-k" 'ac-previous)
 (define-key ac-complete-mode-map "\C-y" 'ac-complete)
 (define-key ac-complete-mode-map "\t" 'ac-complete)
+(define-key ac-complete-mode-map "\r" nil)
 (define-key ac-complete-mode-map "\C-e" 'ac-stop)
 
 ;; Web mode
@@ -122,10 +125,8 @@
 (setq flymake-no-changes-timeout nil)
 (setq flymake-start-syntax-check-on-newline nil)
 (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-;; turn on flychecking globally when open file
-; (add-hook 'after-init-hook #'global-flycheck-mode)
+(flycheck-add-mode 'javascript-eslint 'web-mode)      ;; use eslint with web-mode
+; (add-hook 'after-init-hook #'global-flycheck-mode)  ;; turn on globally
 
 ;; Omnicomplete for html and css
 ; (require 'auto-complete-config)
