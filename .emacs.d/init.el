@@ -227,7 +227,11 @@
 
 ;; Neotree
 (global-set-key [f2] 'neotree-toggle)
+(setq neo-theme 'nerd)
 (setq-default neo-show-hidden-files t)
+ ;; Disable line-numbers minor mode for neotree
+(add-hook 'neo-after-create-hook
+          (lambda (&rest _) (display-line-numbers-mode -1)))
 (add-hook 'neotree-mode-hook
           (lambda ()
             (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
