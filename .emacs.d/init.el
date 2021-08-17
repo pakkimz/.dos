@@ -12,8 +12,9 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
+;; Change title
 (setq-default frame-title-format '("%f"))
-; (setq-default mode-line-format nil)
+; (setq-default mode-line-format nil) ;; disable modeline
 
 (set-frame-font "Hack NF" nil t)
 (show-paren-mode t)                   ;; highlight match pair
@@ -40,6 +41,13 @@
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
 (setq visible-bell 1)
+
+;; Smooth scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 ;; Removes trailing whitespace when save
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
@@ -98,8 +106,6 @@
 (setq ac-use-quick-help nil)    ;; disable tooltip
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(define-key ac-complete-mode-map "\C-j" 'ac-next)
-(define-key ac-complete-mode-map "\C-k" 'ac-previous)
 (define-key ac-complete-mode-map "\C-y" 'ac-complete)
 (define-key ac-complete-mode-map "\t" 'ac-complete)
 (define-key ac-complete-mode-map "\r" nil)
@@ -170,6 +176,9 @@
   (interactive)
   (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
 
+;; C-u for scroll up in normal mode
+(setq evil-want-C-u-scroll t)
+
 ;; Evil stuff
 (evil-mode 1)
 (evil-commentary-mode)
@@ -184,6 +193,16 @@
 ;; Recent file or mru
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
+
+;; C-u to delete line before cursor
+(define-key evil-insert-state-map (kbd "C-u")
+            (lambda ()
+              (interactive)
+              (if (looking-back "^" 0)
+                (backward-delete-char 1)
+                (if (looking-back "^\s*" 0)
+                  (delete-region (point) (line-beginning-position))
+                  (evil-delete (+ (line-beginning-position) (current-indentation)) (point))))))
 
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
