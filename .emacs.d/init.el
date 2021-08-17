@@ -5,6 +5,9 @@
 ;; Set HOME as default directory
 (setq default-directory "~/")
 
+;; Move to trash when delete
+(setq delete-by-moving-to-trash t)
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
