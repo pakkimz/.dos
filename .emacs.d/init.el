@@ -57,13 +57,6 @@
     (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
-;; Removes *Completions* from buffer after you've opened a file.
-(add-hook 'minibuffer-exit-hook
-          '(lambda ()
-             (let ((buffer "*Completions*"))
-               (and (get-buffer buffer)
-                    (kill-buffer buffer)))))
-
 ;; Disable backup and autosave directories
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -196,8 +189,8 @@
 (with-eval-after-load 'evil-maps
                       (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
                       (define-key evil-normal-state-map (kbd "<leader>O") 'only-current-buffer)
-                      (define-key evil-normal-state-map (kbd "<leader>m") 'recentf-open-files)
-                      (define-key evil-normal-state-map (kbd "<leader>b") 'ibuffer)
+                      (define-key evil-normal-state-map (kbd "<leader>m") 'counsel-recentf)
+                      (define-key evil-normal-state-map (kbd "<leader>b") 'ivy-switch-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>r") 'kill-this-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>q") 'save-buffers-kill-terminal)
