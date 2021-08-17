@@ -59,12 +59,6 @@
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
 
-;; Removes *scratch* from buffer after the mode has been set.
-(defun remove-scratch-buffer ()
-  (if (get-buffer "*scratch*")
-    (kill-buffer "*scratch*")))
-(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
-
 ;; Disable backup and autosave directories
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -226,8 +220,9 @@
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 ;; Neotree
+(setq neo-theme 'icon)
 (global-set-key [f2] 'neotree-toggle)
-(setq neo-theme 'nerd)
+; (setq neo-theme 'nerd)
 (setq-default neo-show-hidden-files t)
  ;; Disable line-numbers minor mode for neotree
 (add-hook 'neo-after-create-hook
