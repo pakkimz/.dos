@@ -2,6 +2,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; Set HOME as default directory
+(setq default-directory "~/")
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
@@ -67,6 +70,13 @@
 ; (setq temporary-file-directory "~/.emacs.d/.tmp/")
 ; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 ; (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; Ivy
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 ;; Auto close pair
 (electric-pair-mode 1)
