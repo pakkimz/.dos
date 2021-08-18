@@ -8,6 +8,9 @@
 ;; Move to trash when delete
 (setq delete-by-moving-to-trash t)
 
+;; Disable indent on org mode
+(setq org-adapt-indentation nil)
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
