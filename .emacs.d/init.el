@@ -79,6 +79,7 @@
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-x C-m") 'counsel-recentf)
+(global-set-key (kbd "C-x C-w") 'counsel-up-directory)
 
 ;; Auto close pair
 (electric-pair-mode 1)
