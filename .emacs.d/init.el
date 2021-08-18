@@ -16,7 +16,6 @@
 (setq-default frame-title-format '("%f"))
 ; (setq-default mode-line-format nil) ;; disable modeline
 
-(set-frame-font "Hack NF" nil t)
 (show-paren-mode t)                   ;; highlight match pair
 (global-display-line-numbers-mode)    ;; display number
 (global-visual-line-mode t)           ;; line wrap
@@ -219,19 +218,52 @@
                       (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
-;; Neotree
+;; Neotree cd directory function
+(defun my-neotree-project-dir-toggle ()
+  "Open NeoTree using the project root, using projectile, find-file-in-project,
+  or the current buffer directory."
+  (interactive)
+  (require 'neotree)
+  (let* ((filepath (buffer-file-name))
+         (project-dir
+           (with-demoted-errors
+             (cond
+               ((featurep 'projectile)
+                (projectile-project-root))
+               ((featurep 'find-file-in-project)
+                (ffip-project-root))
+               (t ;; Fall back to version control root.
+                 (if filepath
+                   (vc-call-backend
+                     (vc-responsible-backend filepath) 'root filepath)
+                   nil)))))
+         (neo-smart-open t))
+
+    (if (and (fboundp 'neo-global--window-exists-p)
+             (neo-global--window-exists-p))
+      (neotree-hide)
+      (neotree-show)
+      (when project-dir
+        (neotree-dir project-dir))
+      (when filepath
+        (neotree-find filepath)))))
+
 (setq neo-theme 'icon)
-(global-set-key [f2] 'neotree-toggle)
+(global-set-key [f1] 'neotree-toggle)
+(global-set-key [f2] 'my-neotree-project-dir-toggle)
 ; (setq neo-theme 'nerd)
 (setq-default neo-show-hidden-files t)
- ;; Disable line-numbers minor mode for neotree
+;; Disable line-numbers minor mode for neotree
 (add-hook 'neo-after-create-hook
           (lambda (&rest _) (display-line-numbers-mode -1)))
+;; Neotree maps
 (add-hook 'neotree-mode-hook
           (lambda ()
             (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
             (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
-            (define-key evil-normal-state-local-map (kbd "O") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
             (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 (load-theme 'jbeans t)
+(set-frame-font "Hack NF" nil t)
+(set-face-attribute 'default nil :height 101)
