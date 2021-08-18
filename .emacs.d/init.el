@@ -74,6 +74,8 @@
 (setq enable-recursive-minibuffers t)
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
+(global-set-key (kbd "C-x C-m") 'counsel-recentf)
 
 ;; Auto close pair
 (electric-pair-mode 1)
@@ -201,8 +203,6 @@
 (with-eval-after-load 'evil-maps
                       (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
                       (define-key evil-normal-state-map (kbd "<leader>O") 'only-current-buffer)
-                      (define-key evil-normal-state-map (kbd "<leader>m") 'counsel-recentf)
-                      (define-key evil-normal-state-map (kbd "<leader>b") 'ivy-switch-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>r") 'kill-this-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>q") 'save-buffers-kill-terminal)
