@@ -1,4 +1,4 @@
-set guifont=Hack\ NF:h10
+set guifont=Hack\ NF:h10.1
 set guicursor+=a:blinkon0
 set guioptions-=m
 set guioptions-=T
