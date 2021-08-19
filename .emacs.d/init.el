@@ -8,9 +8,6 @@
 ;; Move to trash when delete
 (setq delete-by-moving-to-trash t)
 
-;; Disable indent on org mode
-(setq org-adapt-indentation nil)
-
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
@@ -267,6 +264,11 @@
             (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
             (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
             (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;; Org mode
+(setq org-adapt-indentation nil)                ;; disable indent
+(add-hook 'org-mode-hook 'org-bullets-mode 1)
+(setq org-bullets-bullet-list '("•" "➤" "•"))
 
 (load-theme 'jbeans t)
 (set-frame-font "Hack NF" nil t)
