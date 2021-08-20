@@ -186,6 +186,9 @@
 ;; Use undo-fu for system undo
 (setq evil-undo-system 'undo-fu)
 
+;; Set shiftwidth <</>>
+(setq-default evil-shift-width 2)
+
 ;; Recent file or mru
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
