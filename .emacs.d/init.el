@@ -272,6 +272,7 @@
 (setq org-adapt-indentation nil)                ;; disable indent
 (add-hook 'org-mode-hook 'org-bullets-mode 1)
 (setq org-bullets-bullet-list '("•" "➤" "•"))
+(global-set-key "\C-ca" 'org-agenda)
 
 (load-theme 'jbeans t)
 (set-frame-font "Hack NF" nil t)
