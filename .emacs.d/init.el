@@ -152,7 +152,7 @@
 (setq evil-undo-system 'undo-fu)          ;; use undo-fu for system undo
 (setq-default evil-shift-width 2)         ;; set shiftwidth when >>
 (with-eval-after-load 'evil-maps
-                      (define-key evil-insert-state-map (kbd "\C-h") 'backspace-whitespace-to-tab-stop)
+                      (define-key evil-insert-state-map (kbd "\C-h") 'delete-backward-char)
                       (define-key evil-normal-state-map "\C-j" 'move-line-down)
                       (define-key evil-normal-state-map "\C-k" 'move-line-up)
                       (define-key evil-normal-state-map "\C-l" 'next-buffer)
