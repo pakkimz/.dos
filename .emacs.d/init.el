@@ -2,30 +2,20 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; Set HOME as default directory
-(setq default-directory "~/")
-
-;; Move to trash when delete
-(setq delete-by-moving-to-trash t)
-
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
-;; Change title
-(setq-default frame-title-format '("%f"))
-; (setq-default mode-line-format nil) ;; disable modeline
+(setq default-directory "~/")                   ;; set HOME as default
+(setq delete-by-moving-to-trash t)              ;; move to trash
+(setq-default frame-title-format '("%f"))       ;; title
+; (setq-default mode-line-format nil)           ;; disable modeline
 
 (show-paren-mode t)                   ;; highlight match pair
 (global-display-line-numbers-mode)    ;; display number
 (global-visual-line-mode t)           ;; line wrap
 
-;; Indentation
-(setq js-indent-level 2)
-(setq-default c-basic-offset 2)
-(setq c-basic-offset 2)
-(setq-default tab-width 2)
-(setq-default c-basic-indent 2)
+(setq-default tab-width 2)            ;; tab width
 (setq-default indent-tabs-mode nil)   ;; expandtab
 
 (blink-cursor-mode 0)
@@ -33,13 +23,13 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode nil)
-(setq show-help-function nil)
 
+(setq visible-bell 1)
+(setq show-help-function nil)
 (setq initial-scratch-message nil)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
-(setq visible-bell 1)
 
 ;; Smooth scrolling
 (setq redisplay-dont-pause t
@@ -47,16 +37,6 @@
       scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
-
-;; Removes trailing whitespace when save
-(add-hook 'write-file-hooks 'delete-trailing-whitespace)
-
-;; No more typing the whole yes or no. Just y or n will do.
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
-(setq-default message-log-max nil)
-(kill-buffer "*Messages*")
 
 ;; Disable backup and autosave directories
 (setq auto-save-default nil)
@@ -67,6 +47,19 @@
 ; (setq temporary-file-directory "~/.emacs.d/.tmp/")
 ; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 ; (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; Backspace remove according to tab size
+(global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
+
+;; Removes trailing whitespace when save
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+
+;; No more typing the whole yes or no. Just y or n will do.
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
 
 ;; Recent file or mru
 (recentf-mode 1)
@@ -84,7 +77,7 @@
 
 ;; Auto close pair
 (electric-pair-mode 1)
-;; Don't auto-indent
+;; Disable auto-indent
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 ;; Auto close single-quote and backtic
 (push '(?\' . ?\') electric-pair-pairs)
@@ -104,12 +97,13 @@
 (global-auto-complete-mode t)
 (setq ac-auto-show-menu 0.0)    ;; don't delay
 (setq ac-use-quick-help nil)    ;; disable tooltip
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(define-key ac-complete-mode-map "\C-y" 'ac-complete)
-(define-key ac-complete-mode-map "\t" 'ac-complete)
-(define-key ac-complete-mode-map "\r" nil)
-(define-key ac-complete-mode-map "\C-e" 'ac-stop)
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+(define-key ac-menu-map "\C-y" 'ac-complete)
+(define-key ac-menu-map "\t" 'ac-complete)
+(define-key ac-menu-map "\r" 'nil)
+(define-key ac-menu-map "\C-e" 'ac-stop)
 
 ;; Web mode
 (require 'web-mode)
@@ -138,7 +132,7 @@
 (setq flymake-start-syntax-check-on-newline nil)
 (setq flycheck-check-syntax-automatically '(save mode-enabled))
 (flycheck-add-mode 'javascript-eslint 'web-mode)      ;; use eslint with web-mode
-; (add-hook 'after-init-hook #'global-flycheck-mode)  ;; turn on globally
+; (add-hook 'after-init-hook #'global-flycheck-mode)  ;; auto turn on globally
 
 ;; Omnicomplete for html and css
 ; (require 'auto-complete-config)
@@ -149,34 +143,21 @@
 ;   '(("css"  . (ac-source-css-property))
 ;     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
-;; Backspace remove according to tab size
-(global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
-
-;; C-u for scroll up in normal mode
-(setq evil-want-C-u-scroll t)
-
 ;; Evil stuff
+(setq evil-want-C-u-scroll t)             ;; C-u for scroll up in normal mode
 (evil-mode 1)
 (evil-commentary-mode)
 (global-evil-surround-mode 1)
-
-;; Set leader key in normal state
-(evil-set-leader 'normal (kbd "SPC"))
-
-;; Use undo-fu for system undo
-(setq evil-undo-system 'undo-fu)
-
-;; Set shiftwidth <</>>
-(setq-default evil-shift-width 2)
-
-;; Map single control to ESC
+(evil-set-leader 'normal (kbd "SPC"))     ;; leader key
+(setq evil-undo-system 'undo-fu)          ;; use undo-fu for system undo
+(setq-default evil-shift-width 2)         ;; set shiftwidth when >>
 (with-eval-after-load 'evil-maps
                       (define-key evil-insert-state-map (kbd "\C-h") 'backspace-whitespace-to-tab-stop)
                       (define-key evil-normal-state-map "\C-j" 'move-line-down)
                       (define-key evil-normal-state-map "\C-k" 'move-line-up)
                       (define-key evil-normal-state-map "\C-l" 'next-buffer)
                       (define-key evil-normal-state-map "\C-h" 'previous-buffer)
-                      (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
+                      (define-key evil-normal-state-map (kbd "g.") 'goto-last-change)
                       (define-key evil-normal-state-map (kbd "<leader>O") 'only-current-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>r") 'kill-this-buffer)
@@ -193,15 +174,14 @@
                       (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
+;; Neotree
 (setq neo-theme 'icon)
 (global-set-key [f1] 'neotree-toggle)
 (global-set-key [f2] 'my-neotree-project-dir-toggle)     ;; find directory
-; (setq neo-theme 'nerd)
 (setq-default neo-show-hidden-files t)
 ;; Disable line-numbers minor mode for neotree
 (add-hook 'neo-after-create-hook
           (lambda (&rest _) (display-line-numbers-mode -1)))
-;; Neotree maps
 (add-hook 'neotree-mode-hook
           (lambda ()
             (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
@@ -222,27 +202,6 @@
 ;; ----------------------------------------------------------------------------------
 ;; Functions
 ;; ----------------------------------------------------------------------------------
-;; Backspace remove as one tab
-(defvar my-offset 2 "My indentation offset. ")
-(defun backspace-whitespace-to-tab-stop ()
-  "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
-  (interactive)
-  (if (or indent-tabs-mode
-          (region-active-p)
-          (save-excursion
-            (> (point) (progn (back-to-indentation)
-                              (point)))))
-      (call-interactively 'backward-delete-char-untabify)
-    (let ((movement (% (current-column) my-offset))
-          (p (point)))
-      (when (= movement 0) (setq movement my-offset))
-      ;; Account for edge case near beginning of buffer
-      (setq movement (min (- p 1) movement))
-      (save-match-data
-        (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
-            (backward-delete-char (- (match-end 1) (match-beginning 1)))
-          (call-interactively 'backward-delete-char))))))
-
 ;; Close all buffer except this buffer
 (defun only-current-buffer ()
   (interactive)
@@ -270,6 +229,27 @@
   (transpose-lines 1)
   (forward-line -1)
   (indent-according-to-mode))
+
+;; Backspace remove as one ta when there is no character
+(defvar my-offset 2 "My indentation offset. ")
+(defun backspace-whitespace-to-tab-stop ()
+  "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
+  (interactive)
+  (if (or indent-tabs-mode
+          (region-active-p)
+          (save-excursion
+            (> (point) (progn (back-to-indentation)
+                              (point)))))
+    (call-interactively 'backward-delete-char-untabify)
+    (let ((movement (% (current-column) my-offset))
+          (p (point)))
+      (when (= movement 0) (setq movement my-offset))
+      ;; Account for edge case near beginning of buffer
+      (setq movement (min (- p 1) movement))
+      (save-match-data
+        (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
+          (backward-delete-char (- (match-end 1) (match-beginning 1)))
+          (call-interactively 'backward-delete-char))))))
 
 ;; Rename file and buffer
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
