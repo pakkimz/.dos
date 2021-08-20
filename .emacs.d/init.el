@@ -269,7 +269,7 @@
             (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 ;; Org mode
-(setq org-adapt-indentation nil)                ;; disable indent
+; (setq org-adapt-indentation nil)                ;; disable indent
 (add-hook 'org-mode-hook 'org-bullets-mode 1)
 (setq org-bullets-bullet-list '("•" "➤" "•"))
 (global-set-key "\C-ca" 'org-agenda)
