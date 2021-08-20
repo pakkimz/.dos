@@ -68,6 +68,10 @@
 ; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 ; (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Recent file or mru
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+
 ;; Ivy
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
@@ -82,11 +86,11 @@
 (electric-pair-mode 1)
 ;; Don't auto-indent
 ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-;; Auto close single-quote, backtic and comment
+;; Auto close single-quote and backtic
 (push '(?\' . ?\') electric-pair-pairs)
-(push '(?\' . ?\') electric-pair-text-pairs)
 (push '(?\` . ?\`) electric-pair-pairs)
-(push '(?\` . ?\`) electric-pair-text-pairs)
+; (push '(?\' . ?\') electric-pair-text-pairs)    ;; in comment and text
+; (push '(?\` . ?\`) electric-pair-text-pairs)
 ;; Disable pair in <
 (setq electric-pair-inhibit-predicate
       `(lambda (c)
@@ -145,32 +149,8 @@
 ;   '(("css"  . (ac-source-css-property))
 ;     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
-;; Switch between split with meta and arrow
-(windmove-default-keybindings 'meta)
-
-;; Switch between buffer
-(global-set-key [(control l)] 'next-buffer)
-(global-set-key [(control h)] 'previous-buffer)
-
-;; Move line up and down
-(defun move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2)
-  (indent-according-to-mode))
-(defun move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1)
-  (indent-according-to-mode))
-(global-set-key [(control shift up)]  'move-line-up)
-(global-set-key [(control shift down)]  'move-line-down)
-
-;; Close all buffer except this buffer
-(defun only-current-buffer ()
-  (interactive)
-  (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
+;; Backspace remove according to tab size
+(global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
 ;; C-u for scroll up in normal mode
 (setq evil-want-C-u-scroll t)
@@ -189,22 +169,13 @@
 ;; Set shiftwidth <</>>
 (setq-default evil-shift-width 2)
 
-;; Recent file or mru
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-
-;; C-u to delete line before cursor
-(define-key evil-insert-state-map (kbd "C-u")
-            (lambda ()
-              (interactive)
-              (if (looking-back "^" 0)
-                (backward-delete-char 1)
-                (if (looking-back "^\s*" 0)
-                  (delete-region (point) (line-beginning-position))
-                  (evil-delete (+ (line-beginning-position) (current-indentation)) (point))))))
-
 ;; Map single control to ESC
 (with-eval-after-load 'evil-maps
+                      (define-key evil-insert-state-map (kbd "\C-h") 'backspace-whitespace-to-tab-stop)
+                      (define-key evil-normal-state-map "\C-j" 'move-line-down)
+                      (define-key evil-normal-state-map "\C-k" 'move-line-up)
+                      (define-key evil-normal-state-map "\C-l" 'next-buffer)
+                      (define-key evil-normal-state-map "\C-h" 'previous-buffer)
                       (define-key evil-normal-state-map (kbd "g .") 'goto-last-change)
                       (define-key evil-normal-state-map (kbd "<leader>O") 'only-current-buffer)
                       (define-key evil-normal-state-map (kbd "<leader>w") 'save-buffer)
@@ -221,6 +192,101 @@
                       (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
                       (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
+
+(setq neo-theme 'icon)
+(global-set-key [f1] 'neotree-toggle)
+(global-set-key [f2] 'my-neotree-project-dir-toggle)     ;; find directory
+; (setq neo-theme 'nerd)
+(setq-default neo-show-hidden-files t)
+;; Disable line-numbers minor mode for neotree
+(add-hook 'neo-after-create-hook
+          (lambda (&rest _) (display-line-numbers-mode -1)))
+;; Neotree maps
+(add-hook 'neotree-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+            (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
+            (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;; Org mode
+; (setq org-adapt-indentation nil)                ;; disable indent
+(add-hook 'org-mode-hook 'org-bullets-mode 1)
+(setq org-bullets-bullet-list '("•" "➤" "•"))
+(global-set-key "\C-ca" 'org-agenda)
+
+(load-theme 'jbeans t)
+(set-frame-font "Hack NF" nil t)
+(set-face-attribute 'default nil :height 101)
+
+;; ----------------------------------------------------------------------------------
+;; Functions
+;; ----------------------------------------------------------------------------------
+;; Backspace remove as one tab
+(defvar my-offset 2 "My indentation offset. ")
+(defun backspace-whitespace-to-tab-stop ()
+  "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
+  (interactive)
+  (if (or indent-tabs-mode
+          (region-active-p)
+          (save-excursion
+            (> (point) (progn (back-to-indentation)
+                              (point)))))
+      (call-interactively 'backward-delete-char-untabify)
+    (let ((movement (% (current-column) my-offset))
+          (p (point)))
+      (when (= movement 0) (setq movement my-offset))
+      ;; Account for edge case near beginning of buffer
+      (setq movement (min (- p 1) movement))
+      (save-match-data
+        (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
+            (backward-delete-char (- (match-end 1) (match-beginning 1)))
+          (call-interactively 'backward-delete-char))))))
+
+;; Close all buffer except this buffer
+(defun only-current-buffer ()
+  (interactive)
+  (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
+
+;; C-u to delete line before cursor
+(define-key evil-insert-state-map (kbd "C-u")
+            (lambda ()
+              (interactive)
+              (if (looking-back "^" 0)
+                (backward-delete-char 1)
+                (if (looking-back "^\s*" 0)
+                  (delete-region (point) (line-beginning-position))
+                  (evil-delete (+ (line-beginning-position) (current-indentation)) (point))))))
+
+;; Move line up and down
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+;; Rename file and buffer
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+      (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+        (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
 
 ;; Neotree cd directory function
 (defun my-neotree-project-dir-toggle ()
@@ -251,29 +317,4 @@
         (neotree-dir project-dir))
       (when filepath
         (neotree-find filepath)))))
-
-(setq neo-theme 'icon)
-(global-set-key [f1] 'neotree-toggle)
-(global-set-key [f2] 'my-neotree-project-dir-toggle)
-; (setq neo-theme 'nerd)
-(setq-default neo-show-hidden-files t)
-;; Disable line-numbers minor mode for neotree
-(add-hook 'neo-after-create-hook
-          (lambda (&rest _) (display-line-numbers-mode -1)))
-;; Neotree maps
-(add-hook 'neotree-mode-hook
-          (lambda ()
-            (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-            (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
-            (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
-
-;; Org mode
-; (setq org-adapt-indentation nil)                ;; disable indent
-(add-hook 'org-mode-hook 'org-bullets-mode 1)
-(setq org-bullets-bullet-list '("•" "➤" "•"))
-(global-set-key "\C-ca" 'org-agenda)
-
-(load-theme 'jbeans t)
-(set-frame-font "Hack NF" nil t)
-(set-face-attribute 'default nil :height 101)
+;; ----------------------------------------------------------------------------------
