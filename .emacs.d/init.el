@@ -152,6 +152,9 @@
 (setq evil-undo-system 'undo-fu)          ;; use undo-fu for system undo
 (setq-default evil-shift-width 2)         ;; set shiftwidth when >>
 (with-eval-after-load 'evil-maps
+                      (define-key evil-normal-state-map "Y" 'djoyner/copy-to-end-of-line)
+                      (define-key evil-visual-state-map (kbd ">") 'djoyner/evil-shift-right-visual)
+                      (define-key evil-visual-state-map (kbd "<") 'djoyner/evil-shift-left-visual)
                       (define-key evil-insert-state-map (kbd "\C-h") 'delete-backward-char)
                       (define-key evil-normal-state-map "\C-j" 'move-line-down)
                       (define-key evil-normal-state-map "\C-k" 'move-line-up)
@@ -207,6 +210,11 @@
   (interactive)
   (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
 
+;; Copy to the end of line
+(defun djoyner/copy-to-end-of-line ()
+  (interactive)
+  (copy-region-as-kill (point) (point-at-eol)))
+
 ;; C-u to delete line before cursor
 (define-key evil-insert-state-map (kbd "C-u")
             (lambda ()
@@ -216,6 +224,18 @@
                 (if (looking-back "^\s*" 0)
                   (delete-region (point) (line-beginning-position))
                   (evil-delete (+ (line-beginning-position) (current-indentation)) (point))))))
+
+;; Overload shifts so that they don't lose the selection
+(defun djoyner/evil-shift-left-visual ()
+  (interactive)
+  (evil-shift-left (region-beginning) (region-end))
+  (evil-normal-state)
+  (evil-visual-restore))
+(defun djoyner/evil-shift-right-visual ()
+  (interactive)
+  (evil-shift-right (region-beginning) (region-end))
+  (evil-normal-state)
+  (evil-visual-restore))
 
 ;; Move line up and down
 (defun move-line-up ()
