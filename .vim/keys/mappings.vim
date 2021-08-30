@@ -14,10 +14,6 @@ noremap Q <Nop>
 " map enter as ctrl-y in vim completion intrupt delimitMate_expand_cr
 " inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
-" supertab. for 'cancel complete C-e' / 'C-y for yes'
-" inoremap <tab> <C-p>
-" inoremap <S-tab> <tab>
-
 " make tab look like common editor
 inoremap <expr> <tab> pumvisible() ? "\<C-Y>" : "\<tab>"
 inoremap <expr> <S-tab> pumvisible() ? "\<C-Y>" : "\<S-tab>"
@@ -30,9 +26,11 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" scroll in command mode
-cnoremap <C-k> <C-p>
-cnoremap <C-j> <C-n>
+" recall the command-line whose beginning matches the current command-line
+cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
+cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"
+cnoremap <expr> <c-j> wildmenumode() ? "\<c-j>" : "\<down>"
+cnoremap <expr> <c-k> wildmenumode() ? "\<c-k>" : "\<up>"
 
 " intuitive moving buffer
 nnoremap <C-l> :bnext<CR>
@@ -52,10 +50,6 @@ nnoremap zh zH
 vnoremap < <gv
 vnoremap > >gv
 
-" make search use normal regex
-nnoremap / /\v
-vnoremap / /\v
-
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -73,6 +67,20 @@ nnoremap <silent><C-w>+ :resize +5<CR>
 nnoremap <silent><C-w>- :resize -5<CR>
 nnoremap <silent><C-w>> :vertical:resize +5<CR>
 nnoremap <silent><C-w>< :vertical:resize -5<CR>
+
+" make search use normal regex
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+
+" if you want n to always search forward and N backward
+nnoremap <expr> n  'Nn'[v:searchforward]
+xnoremap <expr> n  'Nn'[v:searchforward]
+onoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
+xnoremap <expr> N  'nN'[v:searchforward]
+onoremap <expr> N  'nN'[v:searchforward]
 
 " play with leader
 nnoremap <silent><leader>w :w!<CR>
