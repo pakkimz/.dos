@@ -26,6 +26,11 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
+" Prevent selecting and pasting from overwriting what's in the clipboard
+nnoremap x "_x
+nnoremap X "_x
+nnoremap <Del> "_x
+
 " recall the command-line whose beginning matches the current command-line
 cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
 cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"
