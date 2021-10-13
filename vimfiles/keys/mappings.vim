@@ -26,7 +26,7 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Prevent selecting and pasting from overwriting what's in the clipboard
+" prevent selecting and pasting from overwriting what's in the clipboard
 nnoremap x "_x
 nnoremap X "_x
 nnoremap <Del> "_x
