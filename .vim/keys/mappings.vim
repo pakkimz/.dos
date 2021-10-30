@@ -111,6 +111,7 @@ nnoremap <leader>T :tabnew<CR>
 " mru and buffer
 nnoremap <leader>b :b <C-z>
 nnoremap <leader>m :ME <C-z>
+nnoremap <C-p> :e <C-z>
 
 " clipboard install vim-gtk or alias vim-x11 or install xsel in neovim
 nnoremap gy "+y
