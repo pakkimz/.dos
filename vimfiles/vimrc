@@ -17,6 +17,7 @@ Plug 'tsuyoshicho/transparency.vim'
 Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticToggleMode' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }				" need ctags / npm jsctags
 Plug 'pakkimz/vim-gummybears-colorscheme'
+Plug 'pakkimz/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'																" mandatory
 Plug 'Raimondi/delimitMate'                               " C-g g to escape
 Plug 'pakkimz/AutoComplPop'

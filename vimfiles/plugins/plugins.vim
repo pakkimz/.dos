@@ -1,4 +1,5 @@
-colorscheme gummybears
+" colorscheme gummybears
+colorscheme jellybeans
 
 " change cursor shape in different mode
 " let &t_SI = "\<Esc>[6 q"
