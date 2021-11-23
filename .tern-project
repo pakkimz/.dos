@@ -1,7 +1,8 @@
 {
   "libs": [
     "browser",
-    "ecmascript"
+    "ecmascript",
+    "jquery"
   ],
   "plugins": {
     "doc_comment": null,
