@@ -58,3 +58,4 @@ set belloff=all
 set completeopt=menuone,noinsert
 set ttyfast
 set lazyredraw
+set t_md=																								" disable bold font
