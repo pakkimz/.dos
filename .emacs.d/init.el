@@ -120,6 +120,9 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-enable-auto-closing t)
+(setq web-mode-engines-alist
+      '(("php"    . "\\.html\\'")
+        ("blade"  . "\\.blade\\.")))
 
 ;; Disable tern argument
 (setq-default tern-update-argument-hints-async t)
