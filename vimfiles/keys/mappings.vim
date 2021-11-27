@@ -14,6 +14,9 @@ noremap Q <Nop>
 " map enter as ctrl-y in vim completion intrupt delimitMate_expand_cr
 " inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
+" working together
+inoremap <expr> <C-e> ((pumvisible())?("\<C-e>"):("\<End>"))
+
 " make tab look like common editor
 inoremap <expr> <tab> pumvisible() ? "\<C-Y>" : "\<tab>"
 inoremap <expr> <S-tab> pumvisible() ? "\<C-Y>" : "\<S-tab>"
@@ -125,7 +128,7 @@ nnoremap gP "+P
 vnoremap gp "+p
 
 " moving around in insert & command mode, ctrl+b & ctrl+e move beginning and end
-inoremap <C-e> <End>
+" inoremap <C-e> <End>
 inoremap <C-a> <Home>
 inoremap <C-f> <right>
 inoremap <C-b> <left>
