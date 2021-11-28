@@ -1,6 +1,12 @@
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+;; ----------------------------------------------------------------------------------
+;; General
+;; ----------------------------------------------------------------------------------
+;; Set default font
+(set-face-attribute 'default nil
+                    :family "Hack"
+                    :height 101
+                    :weight 'bold
+                    :width 'normal)
 
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
@@ -17,6 +23,10 @@
 
 (setq-default tab-width 2)            ;; tab width
 (setq-default indent-tabs-mode nil)   ;; expandtab
+(setq c-basic-offset 2)
+(setq sh-basic-offset 2)
+(setq js-indent-level 2)
+(setq css-indent-offset 2)
 
 (blink-cursor-mode 0)
 (menu-bar-mode -1)
@@ -60,105 +70,103 @@
 ;; Forces the messages to 0, and kills the *Messages* buffer - thus disabling it on startup.
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
+;; ----------------------------------------------------------------------------------
+;; Packages
+;; ----------------------------------------------------------------------------------
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
-;; Recent file or mru
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-
-;; Ivy
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
-(global-set-key (kbd "C-x C-m") 'counsel-recentf)
-(global-set-key (kbd "C-x C-w") 'counsel-up-directory)
+(setq use-package-always-ensure t)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile (require 'use-package))
 
 ;; Auto close pair
-(electric-pair-mode 1)
-;; Disable auto-indent
-; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-;; Auto close single-quote and backtic
-(push '(?\' . ?\') electric-pair-pairs)
-(push '(?\` . ?\`) electric-pair-pairs)
-; (push '(?\' . ?\') electric-pair-text-pairs)    ;; in comment and text
-; (push '(?\` . ?\`) electric-pair-text-pairs)
-;; Disable pair in <
-(setq electric-pair-inhibit-predicate
-      `(lambda (c)
-         (if (char-equal c ?\<) t (,electric-pair-inhibit-predicate c))))
-;; Disable indent on html
+(use-package electric
+             :init
+             (electric-pair-mode 1)
+             :config
+             ;; Disable auto-indent
+             ; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+             ;; Auto close single-quote and backtic
+             (push '(?\' . ?\') electric-pair-pairs)
+             (push '(?\` . ?\`) electric-pair-pairs)
+             ; (push '(?\' . ?\') electric-pair-text-pairs)    ;; in comment and text
+             ; (push '(?\` . ?\`) electric-pair-text-pairs)
+             ;; Disable pair in <
+             (setq electric-pair-inhibit-predicate
+                   `(lambda (c)
+                      (if (char-equal c ?\<) t (,electric-pair-inhibit-predicate c)))))
+;; Disable electric indent on html
 (defun remove-electric-indent-mode ()
   (electric-indent-local-mode -1))
 (add-hook 'html-mode-hook 'remove-electric-indent-mode)
 
 ;; Autocompletion
-(global-auto-complete-mode t)
-(setq ac-auto-show-menu 0.0)    ;; don't delay
-(setq ac-use-quick-help nil)    ;; disable tooltip
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
-(define-key ac-menu-map "\C-y" 'ac-complete)
-(define-key ac-menu-map "\t" 'ac-complete)
-(define-key ac-menu-map "\r" 'nil)
-(define-key ac-menu-map "\C-e" 'ac-stop)
+(use-package auto-complete
+             :config
+             (global-auto-complete-mode t)
+             (setq ac-auto-show-menu 0.0)    ;; don't delay
+             (setq ac-use-quick-help nil)    ;; disable tooltip
+             (setq ac-use-menu-map t)
+             (define-key ac-menu-map "\C-n" 'ac-next)
+             (define-key ac-menu-map "\C-p" 'ac-previous)
+             (define-key ac-menu-map "\C-y" 'ac-complete)
+             (define-key ac-menu-map "\t" 'ac-complete)
+             (define-key ac-menu-map "\r" 'nil)
+             (define-key ac-menu-map "\C-e" 'ac-stop))
 
-;; Web mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
-(add-to-list 'load-path "~/.emacs.d/vendor/jade-mode")
-(require 'sws-mode)
-(require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-enable-auto-closing t)
-(setq web-mode-engines-alist
-      '(("php"    . "\\.html\\'")
-        ("blade"  . "\\.blade\\.")))
+;; Recent file or mru
+(use-package recentf
+             :config
+             (recentf-mode 1)
+             (setq recentf-max-menu-items 25))
 
-;; Disable tern argument
-(setq-default tern-update-argument-hints-async t)
-;; Tern autocompletion
-(add-hook 'web-mode-hook (lambda () (tern-mode t)))
-(eval-after-load 'tern
-                 '(progn
-                    (require 'tern-auto-complete)
-                    (tern-ac-setup)))
+;; Ivy
+(use-package counsel)
+(use-package ivy
+             :diminish (ivy-mode . "")
+             :init (ivy-mode 1) ; globally at startup
+             :config
+             (setq ivy-use-virtual-buffers t)
+             (setq enable-recursive-minibuffers t)
+             (setq ivy-count-format "%d/%d "))
+(provide 'init-ivy)
+(with-eval-after-load 'ivy
+                      (global-set-key "\C-s" 'swiper)
+                      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+                      (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
+                      (global-set-key (kbd "C-x C-m") 'counsel-recentf)
+                      (global-set-key (kbd "\C-w") 'counsel-up-directory))
 
-;; Flycheck active after command M-x flycheck-mode / global-flycheck-mode
-(require 'flycheck)
-(setq-default flycheck-temp-prefix ".flycheck")
-(setq flymake-no-changes-timeout nil)
-(setq flymake-start-syntax-check-on-newline nil)
-(setq flycheck-check-syntax-automatically '(save mode-enabled))
-(flycheck-add-mode 'javascript-eslint 'web-mode)      ;; use eslint with web-mode
-; (add-hook 'after-init-hook #'global-flycheck-mode)  ;; auto turn on globally
+(use-package undo-fu)
 
-;; Omnicomplete for html and css
-; (require 'auto-complete-config)
-; (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20201213.1255/dict/")
-; (ac-config-default)
-; (add-to-list 'ac-modes 'web-mode)
-; (setq web-mode-ac-sources-alist
-;   '(("css"  . (ac-source-css-property))
-;     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+(use-package evil
+             :demand t
+             :config
+             (setq evil-want-keybinding nil)
+             (setq evil-undo-system 'undo-fu)          ;; use undo-fu for system undo
+             (setq-default evil-shift-width 2)         ;; set shiftwidth when >>
+             (evil-set-leader 'normal (kbd "SPC"))     ;; leader key
+             (evil-mode 1))
 
-;; Evil stuff
-(setq evil-want-C-u-scroll t)             ;; C-u for scroll up in normal mode
-(evil-mode 1)
-(evil-commentary-mode)
-(global-evil-surround-mode 1)
-(evil-set-leader 'normal (kbd "SPC"))     ;; leader key
-(setq evil-undo-system 'undo-fu)          ;; use undo-fu for system undo
-(setq-default evil-shift-width 2)         ;; set shiftwidth when >>
+(use-package evil-collection
+             :after evil
+             (setq evil-want-integration t)
+             (evil-collection-init))
+
+(use-package evil-commentary
+             :after evil
+             :config
+             (evil-commentary-mode))
+
+(use-package evil-surround
+             :after evil
+             :config
+             (global-evil-surround-mode 1))
+
 (with-eval-after-load 'evil-maps
                       (define-key evil-normal-state-map "Y" 'djoyner/copy-to-end-of-line)
                       (define-key evil-visual-state-map (kbd ">") 'djoyner/evil-shift-right-visual)
@@ -185,31 +193,98 @@
                       (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
-;; Neotree
-(setq neo-theme 'icon)
-(global-set-key [f1] 'neotree-toggle)
-(global-set-key [f2] 'my-neotree-project-dir-toggle)     ;; find directory
-(setq-default neo-show-hidden-files t)
-;; Disable line-numbers minor mode for neotree
-(add-hook 'neo-after-create-hook
-          (lambda (&rest _) (display-line-numbers-mode -1)))
-(add-hook 'neotree-mode-hook
-          (lambda ()
-            (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-            (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
-            (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+(use-package neotree
+             :config
+             (setq neo-theme 'icon)
+             (setq-default neo-show-hidden-files t)
+             (global-set-key [f1] 'neotree-toggle)
+             (global-set-key [f2] 'my-neotree-project-dir-toggle)      ;; find directory
+             :init
+             (add-hook 'neo-after-create-hook
+                       (lambda (&rest _) (display-line-numbers-mode -1)))
+             (add-hook 'neotree-mode-hook
+                       (lambda ()
+                         (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+                         (define-key evil-normal-state-local-map (kbd "i") 'neotree-enter-horizontal-split)
+                         (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)
+                         (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
 ;; Org mode
-; (setq org-adapt-indentation nil)                ;; disable indent
-(add-hook 'org-mode-hook 'org-bullets-mode 1)
-(setq org-bullets-bullet-list '("•" "➤" "•"))
-(global-set-key "\C-ca" 'org-agenda)
+(use-package org-bullets
+             :config
+             ; (setq org-adapt-indentation nil)                ;; disable indent
+             (setq org-bullets-bullet-list '("•" "➤" "•"))
+             (global-set-key "\C-ca" 'org-agenda)
+             :init
+             (add-hook 'org-mode-hook 'org-bullets-mode 1))
 
-(load-theme 'jbeans t)
-(set-frame-font "Hack NF" nil t)
-(set-face-attribute 'default nil :height 101)
+(use-package jbeans-theme
+             :config
+             (load-theme 'jbeans t))
+;; ----------------------------------------------------------------------------------
+;; Programming
+;; ----------------------------------------------------------------------------------
+;; Web mode
+(use-package web-mode
+             :mode
+             (("\\.css\\'" . web-mode)
+              ("\\.html?\\'" . web-mode)
+              ("\\.php\\'" . web-mode))
+             :config
+             (setq web-mode-markup-indent-offset 2)
+             (setq web-mode-css-indent-offset 2)
+             (setq web-mode-code-indent-offset 2)
+             (setq web-mode-enable-auto-closing t)
+             (setq web-mode-ac-sources-alist
+                   '(("css" . (ac-source-words-in-buffer ac-source-css-property))
+                     ("html" . (ac-source-words-in-buffer ac-source-abbrev))
+                     ("php" . (ac-source-words-in-buffer
+                                ac-source-words-in-same-mode-buffers
+                                ac-source-dictionary))))
+             (setq web-mode-engines-alist
+                   '(("php"    . "\\.html\\'")
+                     ("blade"  . "\\.blade\\."))))
 
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20201213.1255/dict/")
+(ac-config-default)
+
+;; Js2 mode
+(use-package js2-mode
+             :init
+             (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+             ;; Better imenu
+             (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+             :config
+             ;; Disable syntax checker js2-mode
+             (setq js2-mode-show-parse-errors nil)
+             (setq js2-mode-show-strict-warnings nil))
+
+;; Flycheck active after command M-x flycheck-mode / global-flycheck-mode
+(use-package flycheck
+             :init
+             ; (add-hook 'after-init-hook #'global-flycheck-mode)  ;; auto turn on globally
+             :config
+             (setq-default flycheck-temp-prefix ".flycheck")
+             (setq flymake-no-changes-timeout nil)
+             (setq flymake-start-syntax-check-on-newline nil)
+             (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+(flycheck-add-mode 'javascript-eslint 'web-mode)     ;; use eslint with web-mode
+(flycheck-add-mode 'javascript-eslint 'js2-mode)     ;; use eslint with web-mode
+
+;; Tern javascript completion
+(use-package tern
+             :init
+             ;; Set web-mode & js2 to tern-mode
+             ; (add-hook 'web-mode-hook (lambda () (tern-mode t)))
+             (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+             :config
+             ;; Disable tern argument
+             (setq-default tern-update-argument-hints-async t))
+(use-package tern-auto-complete)
+(eval-after-load 'tern
+                 '(progn
+                    (require 'tern-auto-complete)
+                    (tern-ac-setup)))
 ;; ----------------------------------------------------------------------------------
 ;; Functions
 ;; ----------------------------------------------------------------------------------
@@ -326,17 +401,3 @@
       (when filepath
         (neotree-find filepath)))))
 ;; ----------------------------------------------------------------------------------
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(sws-mode jade-mode web-mode undo-fu tern-auto-complete org-bullets neotree jbeans-theme flycheck evil-surround evil-commentary counsel)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
