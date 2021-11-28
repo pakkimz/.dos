@@ -142,6 +142,7 @@
                       (global-set-key (kbd "\C-w") 'counsel-up-directory))
 
 (use-package undo-fu)
+(setq evil-want-C-u-scroll t)
 
 (use-package evil
              :demand t
