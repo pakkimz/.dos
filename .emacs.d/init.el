@@ -1,5 +1,8 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 (setq use-package-always-ensure t)
@@ -14,7 +17,8 @@
 (require 'init-functions)
 (require 'init-electric)
 (require 'init-auto-complete)
-(require 'init-ivy)
+; (require 'init-ivy)
+(require 'init-vertico)
 (require 'init-org-bullets)
 (require 'init-jbeans-theme)
 (require 'init-js2-mode)
