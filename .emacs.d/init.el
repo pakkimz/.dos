@@ -180,6 +180,10 @@
              :config
              (global-evil-surround-mode 1))
 
+(add-to-list 'load-path "~/.emacs.d/lisp/evil-unimpaired/")
+(require 'evil-unimpaired)
+(evil-unimpaired-mode)
+
 (with-eval-after-load 'evil-maps
                       (define-key evil-normal-state-map "Y" 'djoyner/copy-to-end-of-line)
                       (define-key evil-visual-state-map (kbd ">") 'djoyner/evil-shift-right-visual)
