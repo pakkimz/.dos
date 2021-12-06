@@ -1,6 +1,7 @@
 ;; Autocompletion
 (use-package auto-complete
              :config
+             (ac-config-default)
              (global-auto-complete-mode t)
              (setq ac-auto-show-menu 0.0)    ;; don't delay
              (setq ac-use-quick-help nil)    ;; disable tooltip
