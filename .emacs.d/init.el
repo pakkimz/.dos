@@ -8,6 +8,18 @@
                     :weight 'bold
                     :width 'normal)
 
+;; Increase garbage collector threshold to speed up startup
+(setq gc-cons-threshold 10000000)
+;; Restore after startup
+(add-hook 'after-init-hook
+          (lambda ()
+            (setq gc-cons-threshold 1000000)
+            (message "gc-cons-threshold restored to %S"
+                     gc-cons-threshold)))
+
+;; This stops emacs adding customised settings to init.el
+(setq custom-file (make-temp-file "emacs-custom"))
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
