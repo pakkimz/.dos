@@ -1,10 +1,13 @@
 ;; Autocompletion
 (use-package auto-complete
-             :config
+             :init
              (ac-config-default)
              (global-auto-complete-mode t)
-             (setq ac-auto-show-menu 0.0)    ;; don't delay
-             (setq ac-use-quick-help nil)    ;; disable tooltip
+
+             :config
+             (setq ac-auto-start 2)           ;; start after two character
+             (setq ac-auto-show-menu 0.0)     ;; don't delay
+             (setq ac-use-quick-help nil)     ;; disable tooltip
              (setq ac-use-menu-map t)
              (define-key ac-menu-map "\C-n" 'ac-next)
              (define-key ac-menu-map "\C-p" 'ac-previous)
