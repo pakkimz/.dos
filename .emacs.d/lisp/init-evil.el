@@ -32,7 +32,8 @@
                       (define-key evil-normal-state-map "Y" 'djoyner/copy-to-end-of-line)
                       (define-key evil-visual-state-map (kbd ">") 'djoyner/evil-shift-right-visual)
                       (define-key evil-visual-state-map (kbd "<") 'djoyner/evil-shift-left-visual)
-                      (define-key evil-insert-state-map (kbd "\C-h") 'delete-backward-char)
+                      ; (define-key evil-insert-state-map (kbd "\C-h") 'delete-backward-char)                 ;; one character
+                      (define-key evil-insert-state-map (kbd "\C-h") 'backspace-whitespace-to-tab-stop)     ;; according tab space
                       (define-key evil-normal-state-map "\C-j" 'move-line-down)
                       (define-key evil-normal-state-map "\C-k" 'move-line-up)
                       (define-key evil-normal-state-map "\C-l" 'next-buffer)

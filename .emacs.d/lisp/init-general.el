@@ -39,6 +39,11 @@
 (setq sh-basic-offset 2)
 (setq js-indent-level 2)
 (setq css-indent-offset 2)
+;; php indent
+(add-hook 'php-mode-hook
+          (lambda ()
+            (make-local-variable 'c-basic-offset)
+            (setq c-basic-offset 2)))
 
 (blink-cursor-mode 0)
 (menu-bar-mode -1)

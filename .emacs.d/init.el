@@ -22,3 +22,4 @@
 (require 'init-flycheck)
 (require 'init-tern)
 (require 'init-ac-html)
+(require 'init-polymode)
