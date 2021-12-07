@@ -16,6 +16,13 @@
              :init
              (savehist-mode)
              )
+
+(use-package consult
+             :bind
+             ("C-x b" . consult-buffer)
+             ("M-s l" . consult-line)
+             )
+
 ;; Key-binding
 ; C-x C-f find file
 ; C-x C-r find recent file
