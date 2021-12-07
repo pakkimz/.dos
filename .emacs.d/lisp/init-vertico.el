@@ -6,6 +6,7 @@
 
 (use-package vertico
              :bind (:map vertico-map
+                         ("C-y" . vertico-insert)
                          ("C-j" . vertico-next)
                          ("C-k" . vertico-previous)
                          :map minibuffer-local-map
