@@ -5,6 +5,7 @@
              (global-auto-complete-mode t)
 
              :config
+             (ac-flyspell-workaround)         ;; make little bit fast
              (setq ac-auto-start 2)           ;; start after two character
              (setq ac-auto-show-menu 0.0)     ;; don't delay
              (setq ac-use-quick-help nil)     ;; disable tooltip
