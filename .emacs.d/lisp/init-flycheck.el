@@ -8,6 +8,7 @@
              (setq flymake-start-syntax-check-on-newline nil)
              (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 ; (flycheck-add-mode 'javascript-eslint 'web-mode)     ;; use eslint with web-mode
-(flycheck-add-mode 'javascript-eslint 'js2-mode)     ;; use eslint with js2-mode
+; (flycheck-add-mode 'javascript-eslint 'js2-mode)     ;; use eslint with js2-mode
+(flycheck-add-mode 'javascript-eslint 'js-mode)     ;; use eslint with js-mode
 
 (provide 'init-flycheck)
