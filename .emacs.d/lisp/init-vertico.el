@@ -1,3 +1,9 @@
+;; Recent file or mru
+(use-package recentf
+             :config
+             (recentf-mode 1)
+             (setq recentf-max-menu-items 25))
+
 (use-package vertico
              :bind (:map vertico-map
                          ("C-j" . vertico-next)
@@ -12,6 +18,12 @@
              (vertico-mode)
              )
 
+(use-package orderless
+             :init
+             (setq completion-styles '(orderless)
+                   completion-category-defaults nil
+                   completion-category-overrides '((file (styles partial-completion)))))
+
 (use-package savehist
              :init
              (savehist-mode)
@@ -19,8 +31,9 @@
 
 (use-package consult
              :bind
+             ("C-x C-r" . consult-recent-file)
              ("C-x b" . consult-buffer)
-             ("M-s l" . consult-line)
+             ("C-s" . consult-line)
              )
 
 ;; Key-binding

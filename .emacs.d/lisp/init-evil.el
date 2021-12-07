@@ -10,10 +10,10 @@
              (evil-set-leader 'normal (kbd "SPC"))     ;; leader key
              (evil-mode 1))
 
-(use-package evil-collection
-             :after evil
-             (setq evil-want-integration t)
-             (evil-collection-init))
+;; (use-package evil-collection
+;;              :after evil
+;;              (setq evil-want-integration t)
+;;              (evil-collection-init))
 
 (use-package evil-commentary
              :after evil
