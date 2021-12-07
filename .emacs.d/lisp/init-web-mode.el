@@ -14,7 +14,10 @@
 
              (setq web-mode-ac-sources-alist
                    '(("css" . (ac-source-css-property))
-                     ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+                     ("html" . (ac-source-words-in-buffer ac-source-abbrev))
+                     ("php" . (ac-source-words-in-buffer
+                                ac-source-words-in-same-mode-buffers
+                                ac-source-dictionary))))
 
              ; (setq web-mode-engines-alist
              ;       '(("php"    . "\\.html\\'")
