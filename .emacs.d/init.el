@@ -30,6 +30,7 @@
 (require 'init-org-bullets)
 (require 'init-jbeans-theme)
 ; (require 'init-js2-mode)
+; (require 'init-rjsx-mode)
 (require 'init-flycheck)
 (require 'init-tern)
 ; (require 'init-ac-html)
