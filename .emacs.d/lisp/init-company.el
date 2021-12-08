@@ -5,15 +5,17 @@
              :custom
              (company-idle-delay 0.0)
              (company-minimum-prefix-length 2)
-             (company-format-margin-function nil)       ;; remove abc
-             (company-tng-mode t)                       ;; always show menu even only one
+             (company-format-margin-function nil)         ;; remove abc
+             (company-selection-wrap-around t)            ;; cycle back
+             ; (company-tng-mode t)                       ;; tab and go
 
              :bind (:map company-active-map
                          ("C-j" . company-select-next)
                          ("C-k" . company-select-previous)
-                         ("C-y" . company-complete-selection)
                          ("C-e" . company-abort)
                          ("C-w" . company-abort)
+                         ("C-y" . company-complete-selection)
+                         ("<tab>" . company-complete-selection)
                          )
              )
 
