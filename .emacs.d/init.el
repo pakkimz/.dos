@@ -31,6 +31,7 @@
 (require 'init-jbeans-theme)
 ; (require 'init-js2-mode)
 ; (require 'init-rjsx-mode)
+(require 'init-php-mode)
 (require 'init-flycheck)
 (require 'init-tern)
 ; (require 'init-ac-html)
