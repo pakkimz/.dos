@@ -1,3 +1,7 @@
+; (setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
+;                          ("melpa" . "https://melpa.org/packages/")
+;                          ("org" . "http://orgmode.org/elpa/")))
+
 ;; Install straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
