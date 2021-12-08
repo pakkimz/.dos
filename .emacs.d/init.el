@@ -32,6 +32,6 @@
 ; (require 'init-js2-mode)
 (require 'init-flycheck)
 (require 'init-tern)
-(require 'init-ac-html)
+; (require 'init-ac-html)
 ; (require 'init-web-mode)
 ; (require 'init-polymode)

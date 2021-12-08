@@ -4,13 +4,25 @@
              (recentf-mode 1)
              (setq recentf-max-menu-items 25))
 
+;; Use vertico extensions
+(straight-use-package '( vertico :files (:defaults "extensions/*")
+                                 :includes (vertico-buffer
+                                             vertico-directory
+                                             vertico-flat
+                                             vertico-indexed
+                                             vertico-mouse
+                                             vertico-quick
+                                             vertico-repeat
+                                             vertico-reverse)))
+
 (use-package vertico
              :bind (:map vertico-map
                          ("C-y" . vertico-insert)
                          ("C-j" . vertico-next)
                          ("C-k" . vertico-previous)
-                         :map minibuffer-local-map
-                         ("C-w" . backward-kill-word)
+                         ; :map minibuffer-local-map
+                         ; ("C-w" . backward-kill-word)
+                         ("C-w" . vertico-directory-delete-word)
                          )
 
              :custom
