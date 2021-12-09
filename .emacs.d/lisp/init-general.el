@@ -88,4 +88,8 @@
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
 
+;; Treat underscore and minus part of word
+(modify-syntax-entry ?_ "w")
+(modify-syntax-entry ?- "w")
+
 (provide 'init-general)

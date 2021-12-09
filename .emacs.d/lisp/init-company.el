@@ -11,7 +11,10 @@
 
              ; always show tooltip even if there is only one candidate
              (company-frontends '(company-pseudo-tooltip-frontend
-                          company-echo-metadata-frontend))
+                                   company-echo-metadata-frontend))
+
+             ; delete company-dabbrev so can treat symbol as one word
+             (delete 'company-dabbrev company-backends)
 
              :bind (:map company-active-map
                          ("C-j" . company-select-next)
