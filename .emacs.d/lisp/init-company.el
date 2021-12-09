@@ -9,6 +9,10 @@
              (company-selection-wrap-around t)            ;; cycle back
              ; (company-tng-mode t)                       ;; tab and go
 
+             ; always show tooltip even if there is only one candidate
+             (company-frontends '(company-pseudo-tooltip-frontend
+                          company-echo-metadata-frontend))
+
              :bind (:map company-active-map
                          ("C-j" . company-select-next)
                          ("C-k" . company-select-previous)
@@ -16,6 +20,8 @@
                          ("C-w" . company-abort)
                          ("C-y" . company-complete-selection)
                          ("<tab>" . company-complete-selection)
+                         ; ("<return>" . nil)
+                         ; ("RET" . nil)
                          )
              )
 
