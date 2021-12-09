@@ -43,6 +43,9 @@
              )
 
 (use-package consult
+             :custom
+             (consult-preview-key nil)          ; disable preview
+
              :bind
              ("C-x C-r" . consult-recent-file)
              ("C-x b" . consult-buffer)
