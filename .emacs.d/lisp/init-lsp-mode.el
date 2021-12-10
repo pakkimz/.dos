@@ -21,11 +21,13 @@
              (c-mode . lsp-deferred)
              (c++-mode . lsp-deferred)
              (html-mode . lsp-deferred)
+             (php-mode . lsp-deferred)
              (lsp-mode . company-mode)
 
              )
 
 ;; Keymap
 ;; Ctrl-alt i (complation at point) to see what available completion in cursor
+;; npm i -g intelephense -- backend for php
 
 (provide 'init-lsp-mode)
