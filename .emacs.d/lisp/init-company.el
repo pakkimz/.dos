@@ -3,7 +3,7 @@
              (add-hook 'after-init-hook 'global-company-mode)
 
              :custom
-             (company-idle-delay 0.0)
+             ; (company-idle-delay 0.0)
              (company-minimum-prefix-length 2)
              (company-format-margin-function nil)         ;; remove abc
              (company-selection-wrap-around t)            ;; cycle back
