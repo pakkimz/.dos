@@ -25,4 +25,7 @@
 
              )
 
+;; Keymap
+;; Ctrl-alt i (complation at point) to see what available completion in cursor
+
 (provide 'init-lsp-mode)
