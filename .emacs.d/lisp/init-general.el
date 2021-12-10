@@ -39,6 +39,10 @@
 (setq sh-basic-offset 2)
 (setq js-indent-level 2)
 (setq css-indent-offset 2)
+
+(setq python-indent-guess-indent-offset nil)
+(setq python-indent-offset 2)
+
 ;; php indent
 (add-hook 'php-mode-hook
           (lambda ()
