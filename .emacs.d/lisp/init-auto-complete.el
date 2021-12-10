@@ -1,8 +1,8 @@
 ;; Autocompletion
 (use-package auto-complete
              :init
-             (ac-config-default)
-             (global-auto-complete-mode t)
+             ; (ac-config-default)
+             ; (global-auto-complete-mode t)
 
              :config
              (ac-flyspell-workaround)         ;; make little bit fast
