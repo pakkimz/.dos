@@ -4,6 +4,8 @@
              (lsp lsp-deferred)
 
              :custom
+             (lsp-log-io nil)
+             (lsp-idle-delay 0.500)
              (lsp-diagnostics-provider :none)
              (lsp-lens-enable nil)
              (lsp-eldoc-enable-hover nil)
