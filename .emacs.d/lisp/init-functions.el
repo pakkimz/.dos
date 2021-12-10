@@ -113,5 +113,15 @@
         (neotree-dir project-dir))
       (when filepath
         (neotree-find filepath)))))
+
+;; Short to add semicolon
+(global-set-key (kbd "M-;")
+  (lambda ()
+    (interactive)
+    ;; Keep cursor motion within this block (don't move the users cursor).
+    (save-excursion
+      ;; Typically mapped to the "End" key.
+      (call-interactively 'move-end-of-line)
+      (insert ";"))))
 ;; ----------------------------------------------------------------------------------
 (provide 'init-functions)
