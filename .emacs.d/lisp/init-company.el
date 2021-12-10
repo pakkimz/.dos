@@ -7,6 +7,7 @@
              (company-minimum-prefix-length 2)
              (company-format-margin-function nil)         ;; remove abc
              (company-selection-wrap-around t)            ;; cycle back
+             (company-tooltip-align-annotations t)        ;; align parameter hints to right
              ; (company-tng-mode t)                       ;; tab and go
 
              ; always show tooltip even if there is only one candidate
