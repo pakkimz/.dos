@@ -30,6 +30,9 @@
 
              )
 
+(use-package python-mode
+             :hook
+             (python-mode . lsp-deferred))
 ;; Keymap
 ;; Ctrl-alt i (complation at point) to see what available completion in cursor
 ;; npm i -g intelephense -- backend for php
