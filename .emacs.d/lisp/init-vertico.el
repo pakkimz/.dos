@@ -4,6 +4,13 @@
              (recentf-mode 1)
              (setq recentf-max-menu-items 25))
 
+(use-package which-key
+             :init
+             (which-key-mode)
+             :custom
+             (which-key-setup-minibuffer)
+             )
+
 ;; Use vertico extensions
 (straight-use-package '( vertico :files (:defaults "extensions/*")
                                  :includes (vertico-buffer

@@ -4,6 +4,8 @@
              (lsp lsp-deferred)
 
              :custom
+             (lsp-enable-which-key-integration t)
+             (lsp-keymap-prefix "C-c l")
              (lsp-log-io nil)
              (lsp-idle-delay 0.500)
              (lsp-diagnostics-provider :none)
