@@ -22,7 +22,7 @@
                          ("C-k" . company-select-previous)
                          ("C-e" . company-abort)
                          ("C-w" . company-abort)
-                         ("C-SPC" . company-abort)
+                         ("C-SPC" . evil-force-normal-state)
                          ("C-y" . company-complete-selection)
                          ("<tab>" . company-complete-selection)
                          ; ("<return>" . nil)
