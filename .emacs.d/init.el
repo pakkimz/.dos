@@ -27,6 +27,7 @@
 (require 'init-general)
 (require 'init-jbeans-theme)
 (require 'init-org-bullets)
+(require 'init-lorem-ipsum)
 (require 'init-evil)
 (require 'init-functions)
 (require 'init-electric)
