@@ -33,19 +33,6 @@
   (evil-normal-state)
   (evil-visual-restore))
 
-;; Move line up and down
-(defun move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2)
-  (indent-according-to-mode))
-(defun move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1)
-  (indent-according-to-mode))
-
 ;; Backspace remove as one ta when there is no character
 (defvar my-offset 2 "My indentation offset. ")
 (defun backspace-whitespace-to-tab-stop ()
