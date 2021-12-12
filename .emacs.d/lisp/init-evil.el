@@ -16,13 +16,25 @@
 ;;              (evil-collection-init))
 
 (use-package evil-matchit
+             :after evil
              :init
              (global-evil-matchit-mode 1))
+
+(use-package evil-exchange
+             :after evil
+             :init
+             (evil-exchange-cx-install))
 
 (use-package evil-surround
              :after evil
              :config
              (global-evil-surround-mode 1))
+
+(use-package evil-replace-with-register
+             :after evil
+             :init
+             (setq evil-replace-with-register-key (kbd "gr"))
+             (evil-replace-with-register-install))
 
 (use-package evil-commentary
              :diminish
@@ -35,6 +47,13 @@
              :after evil
              :config
              (drag-stuff-global-mode 1))
+
+(use-package evil-textobj-entire
+             :after evil
+             :bind (:map evil-outer-text-objects-map
+                         ("e" . evil-entire-entire-buffer))
+             :bind (:map evil-inner-text-objects-map
+                         ("e" . evil-entire-entire-buffer)))
 
 (require 'evil-unimpaired)
 (evil-unimpaired-mode)
@@ -67,6 +86,7 @@
                       (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 (use-package neotree
+             :after evil
              :config
              (setq neo-theme 'icon)
              (setq-default neo-show-hidden-files t)
