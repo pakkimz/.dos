@@ -80,8 +80,9 @@
 ; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 ; (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-;; Backspace remove according to tab size
+;; Backspace remove according to tab size & C-SPC to quit everthing
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
+(global-set-key (kbd "C-SPC") 'keyboard-escape-quit)
 
 ;; Removes trailing whitespace when save
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)

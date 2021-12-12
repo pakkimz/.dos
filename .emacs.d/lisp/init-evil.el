@@ -28,6 +28,7 @@
 
 (use-package drag-stuff
              :diminish
+             :after evil
              :config
              (drag-stuff-global-mode 1))
 
@@ -52,7 +53,7 @@
                       (define-key evil-insert-state-map (kbd "C-SPC") 'evil-force-normal-state)
                       (define-key evil-normal-state-map (kbd "C-SPC") 'evil-ex-nohighlight)
                       (define-key evil-visual-state-map (kbd "C-SPC") 'evil-force-normal-state)
-                      (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c"))
+                      ; (define-key evil-ex-completion-map (kbd "C-SPC") (kbd "C-c"))
                       (define-key evil-insert-state-map "\C-a" 'beginning-of-line)
                       (define-key evil-insert-state-map "\C-e" 'end-of-line)
                       (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)

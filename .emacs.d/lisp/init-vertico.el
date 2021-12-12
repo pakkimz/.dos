@@ -56,6 +56,7 @@
 
              :bind
              ("C-x C-r" . consult-recent-file)
+             ("C-x C-b" . consult-buffer)
              ("C-x b" . consult-buffer)
              ("C-s" . consult-line)
              )
