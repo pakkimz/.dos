@@ -32,7 +32,7 @@
 (show-paren-mode t)                             ;; highlight match pair
 (global-display-line-numbers-mode)              ;; display number
 (diminish 'global-visual-line-mode t)           ;; line wrap
-(diminish 'eldoc-mode)           ;; line wrap
+(diminish 'eldoc-mode)
 
 (setq-default tab-width 2)            ;; tab width
 (setq-default indent-tabs-mode nil)   ;; expandtab

@@ -15,16 +15,20 @@
 ;;              (setq evil-want-integration t)
 ;;              (evil-collection-init))
 
-(use-package evil-commentary
-             :diminish
-             :after evil
-             :config
-             (evil-commentary-mode))
+(use-package evil-matchit
+             :init
+             (global-evil-matchit-mode 1))
 
 (use-package evil-surround
              :after evil
              :config
              (global-evil-surround-mode 1))
+
+(use-package evil-commentary
+             :diminish
+             :after evil
+             :config
+             (evil-commentary-mode))
 
 (use-package drag-stuff
              :diminish
