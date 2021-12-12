@@ -16,6 +16,7 @@
 ;;              (evil-collection-init))
 
 (use-package evil-commentary
+             :diminish
              :after evil
              :config
              (evil-commentary-mode))
@@ -26,6 +27,7 @@
              (global-evil-surround-mode 1))
 
 (use-package drag-stuff
+             :diminish
              :config
              (drag-stuff-global-mode 1))
 

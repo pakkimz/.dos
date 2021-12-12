@@ -5,6 +5,7 @@
              (setq recentf-max-menu-items 25))
 
 (use-package which-key
+             :diminish
              :init
              (which-key-mode)
              :custom

@@ -1,4 +1,5 @@
 (use-package company
+             :diminish
              :init
              (add-hook 'after-init-hook 'global-company-mode)
 
@@ -31,6 +32,7 @@
              )
 
 (use-package yasnippet
+             :diminish yas-minor-mode
              :init
              (yas-global-mode 1))
 

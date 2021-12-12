@@ -23,6 +23,8 @@
 (use-package straight
              :custom (straight-use-package-by-default t))
 
+(use-package diminish)
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'init-general)
 (require 'init-jbeans-theme)
