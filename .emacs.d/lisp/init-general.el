@@ -8,7 +8,7 @@
 ;                     :weight 'bold
 ;                     :width 'normal)
 
-(add-to-list 'default-frame-alist '(font . "Hack NF-10.1"))
+(add-to-list 'default-frame-alist '(font . "Hack-10.1:bold"))
 
 ;; Increase garbage collector threshold to speed up startup
 (setq gc-cons-threshold 10000000)
