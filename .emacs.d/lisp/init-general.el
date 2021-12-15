@@ -2,11 +2,13 @@
 ;; General
 ;; ----------------------------------------------------------------------------------
 ;; Set default font
-(set-face-attribute 'default nil
-                    :family "Hack"
-                    :height 101
-                    :weight 'bold
-                    :width 'normal)
+; (set-face-attribute 'default nil
+;                     :family "Hack"
+;                     :height 101
+;                     :weight 'bold
+;                     :width 'normal)
+
+(add-to-list 'default-frame-alist '(font . "Hack NF-10.1"))
 
 ;; Increase garbage collector threshold to speed up startup
 (setq gc-cons-threshold 10000000)
@@ -62,6 +64,8 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
+(setq frame-inhibit-implied-resize t)             ;; add 0.4-1s to startup
+(setq initial-major-mode 'fundamental-mode)
 
 ;; Smooth scrolling
 (setq redisplay-dont-pause t
