@@ -4,6 +4,14 @@
              (recentf-mode 1)
              (setq recentf-max-menu-items 25))
 
+(use-package which-key
+             :diminish
+             :init
+             (which-key-mode)
+             :custom
+             (which-key-setup-minibuffer)
+             )
+
 (use-package counsel)
 
 ;; Ivy
