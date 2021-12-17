@@ -14,6 +14,7 @@
              (setq ivy-use-virtual-buffers t)
              (setq enable-recursive-minibuffers t)
              (setq ivy-count-format "%d/%d ")
+             (setq ivy-ignore-buffers '("\\` " "\\`\\*"))
 
              :bind (:map ivy-switch-buffer-map
                          ("C-j" . ivy-next-line)
