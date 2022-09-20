@@ -106,7 +106,7 @@ nnoremap <leader>e :e<Space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>c :cd<Space>
 nnoremap <leader>C :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>f :find<Space>
+" nnoremap <leader>f :find<Space>
 nnoremap <leader>s :saveas<Space>
 nnoremap <leader>t :tabnew<Space>
 nnoremap <leader>T :tabnew<CR>
@@ -114,7 +114,7 @@ nnoremap <leader>T :tabnew<CR>
 " mru and buffer
 nnoremap <leader>b :b <C-z>
 nnoremap <leader>m :ME <C-z>
-nnoremap <C-p> :e <C-z>
+nnoremap <leader>f :e <C-z>
 
 " clipboard install vim-gtk or alias vim-x11 or install xsel in neovim
 nnoremap gy "+y
@@ -172,10 +172,10 @@ nnoremap <silent><C-n> :NERDTreeToggle . <Bar>wincmd p<Bar><CR>
 nnoremap <silent><leader>d :bp<cr>:bd #<cr>
 
 " vim-move mapping
-vmap <C-j> <Plug>MoveBlockDown
-vmap <C-k> <Plug>MoveBlockUp
-nmap <C-j> <Plug>MoveLineDown
-nmap <C-k> <Plug>MoveLineUp
+vmap <A-j> <Plug>MoveBlockDown
+vmap <A-k> <Plug>MoveBlockUp
+nmap <A-j> <Plug>MoveLineDown
+nmap <A-k> <Plug>MoveLineUp
 
 " don't scroll too fast
 nnoremap <silent> <C-d> :call comfortable_motion#flick(50)<CR>
