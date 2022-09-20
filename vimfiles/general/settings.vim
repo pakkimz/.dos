@@ -59,3 +59,7 @@ set completeopt=menuone,noinsert
 set ttyfast
 set lazyredraw
 set t_md=																								" disable bold font
+
+" for gvim default window size
+set lines=40
+set columns=80
