@@ -24,7 +24,7 @@ set textwidth=106
 set autoindent                                          " no use smartindent
 set breakindent
 set linebreak																						" wrap word
-" set linespace=2                                         " only works in gui
+set linespace=0                                         " only works in gui
 set mouse=a
 set wildmenu
 set wildmode=full																				" just use regular wildmode

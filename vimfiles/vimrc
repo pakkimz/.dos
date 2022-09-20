@@ -1,4 +1,4 @@
-set guifont=Hack\ NF:h10.1
+set guifont=Hack\ NF:h10.2
 set guicursor+=a:blinkon0
 set guioptions-=m
 set guioptions-=T
@@ -22,7 +22,7 @@ Plug 'sheerun/vim-polyglot'																" mandatory
 Plug 'Raimondi/delimitMate'                               " C-g g to escape
 Plug 'pakkimz/AutoComplPop'
 Plug 'preservim/nerdtree'
-Plug 'scrooloose/nerdtree-project-plugin'
+" Plug 'scrooloose/nerdtree-project-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rking/ag.vim'
@@ -54,9 +54,9 @@ Plug 'tpope/vim-repeat'                                   " put this on the last
 " Plug 'ivalkeen/vim-simpledb'
 " Plug 'gregsexton/MatchTag'
 Plug 'ap/vim-css-color'
-Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern', 'for': 'javascript' }
-Plug 'shawncplus/phpcomplete.vim'
+" Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp'] }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern', 'for': 'javascript' }
+" Plug 'shawncplus/phpcomplete.vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 call plug#end()
 
