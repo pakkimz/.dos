@@ -1,8 +1,12 @@
+" for gvim default window size
+set lines=40
+set columns=80
+
 set termguicolors                                       " enable true colors support
 set synmaxcol=500                                       " syntax coloring lines that are too long just slows down the world
 set regexpengine=1																			" fixes slow speed due to syntax highlighting
 set updatetime=50
-set number
+set nonumber
 set showcmd                                             " showing command history
 set noshowmode                                          " hide the insert status
 set noruler																							" hide info in bottom of screen
@@ -59,7 +63,3 @@ set completeopt=menuone,noinsert
 set ttyfast
 set lazyredraw
 set t_md=																								" disable bold font
-
-" for gvim default window size
-set lines=40
-set columns=80
