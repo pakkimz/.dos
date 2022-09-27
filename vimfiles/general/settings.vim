@@ -5,7 +5,7 @@ set columns=80
 set termguicolors                                       " enable true colors support
 set synmaxcol=500                                       " syntax coloring lines that are too long just slows down the world
 set regexpengine=1																			" fixes slow speed due to syntax highlighting
-set updatetime=50
+set updatetime=300
 set nonumber
 set showcmd                                             " showing command history
 set noshowmode                                          " hide the insert status
