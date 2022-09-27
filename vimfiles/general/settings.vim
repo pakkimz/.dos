@@ -26,8 +26,10 @@ set breakindent
 set linebreak																						" wrap word
 set linespace=0                                         " only works in gui
 set mouse=a
+set signcolumn=yes
 set wildmenu
 set wildmode=full																				" just use regular wildmode
+set wildoptions=pum																			" use popup menu in wildmode as in neovim
 set wildcharm=<C-z>                                     " make mru and buffer working
 set whichwrap+=<,>,h,l,[,]
 set virtualedit=block																		" block selection in visual mode

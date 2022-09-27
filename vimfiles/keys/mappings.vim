@@ -37,8 +37,8 @@ nnoremap <Del> "_x
 " recall the command-line whose beginning matches the current command-line
 cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
 cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"
-cnoremap <expr> <c-j> wildmenumode() ? "\<c-j>" : "\<down>"
-cnoremap <expr> <c-k> wildmenumode() ? "\<c-k>" : "\<up>"
+cnoremap <expr> <c-j> wildmenumode() ? "\<c-n>" : "\<down>"
+cnoremap <expr> <c-k> wildmenumode() ? "\<c-p>" : "\<up>"
 
 " intuitive moving buffer
 nnoremap <C-l> :bnext<CR>
