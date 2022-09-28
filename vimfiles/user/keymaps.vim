@@ -120,9 +120,9 @@ nnoremap <leader>f :e <C-z>
 nnoremap gy "+y
 nnoremap gY "+y$
 vnoremap gy "+y
-nnoremap gd "+d
-nnoremap gD "+D
-vnoremap gd "+d
+" nnoremap gd "+d
+" nnoremap gD "+D
+" vnoremap gd "+d
 nnoremap gp "+p
 nnoremap gP "+P
 vnoremap gp "+p
