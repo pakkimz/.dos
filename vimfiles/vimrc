@@ -1,0 +1,15 @@
+set guifont=Hack\ NF:h10.2
+set guicursor+=a:blinkon0
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+nmap <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+nmap <F12> <Plug>(TransparencyToggle)
+
+source ~\vimfiles\user\plugins.vim
+source ~\vimfiles\user\settings.vim
+source ~\vimfiles\user\options.vim
+source ~\vimfiles\user\keymaps.vim
+source ~\vimfiles\user\lsp.vim
+source ~\vimfiles\user\commands.vim
