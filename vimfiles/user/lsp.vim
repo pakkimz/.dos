@@ -3,6 +3,18 @@ let g:asyncomplete_min_chars = 1
 let g:lsp_signature_help_enabled = 0
 let g:lsp_completion_documentation_enabled = 0
 
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+			\ 'name': 'buffer',
+			\ 'allowlist': ['*'],
+			\ 'blocklist': ['go'],
+			\ 'completor': function('asyncomplete#sources#buffer#completor'),
+			\ 'config': {
+			\    'max_buffer_size': 5000000,
+			\    'clear_cache': 1,
+			\    'min_word_len': 2,
+			\  },
+			\ }))
+
 if executable('html-languageserver')
 	au User lsp_setup call lsp#register_server({
 				\ 'name': 'html-languageserver',

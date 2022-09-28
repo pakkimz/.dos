@@ -6,7 +6,6 @@ filetype plugin indent on																	" all in one line
 call plug#begin('~\vimfiles\plugged\')
 Plug 'tsuyoshicho/transparency.vim'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }				" need ctags / npm jsctags
-" Plug 'pakkimz/AutoComplPop'
 Plug 'pakkimz/jellybeans.vim'
 Plug 'pakkimz/Strips'
 Plug 'sheerun/vim-polyglot'																" mandatory
@@ -47,6 +46,7 @@ Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'omgitsmoe/asyncomplete-buffer.vim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 call plug#end()
