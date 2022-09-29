@@ -37,11 +37,9 @@ Plug 'tpope/vim-repeat'                                   " put this on the last
 " Plug 'tpope/vim-fugitive'
 " Plug 'AndrewRadev/splitjoin.vim'                        " gS and gJ split and join
 " Plug 'Yggdroot/indentLine'															" need expandtab to make it works
-" Plug 'ivalkeen/vim-simpledb'
 " Plug 'gregsexton/MatchTag'
 Plug 'ap/vim-css-color'
-Plug 'captbaritone/better-indent-support-for-php-with-html', { 'for': 'php' }
-
+Plug 'ivalkeen/vim-simpledb', { 'for' : 'sql' }
 " LSP
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
