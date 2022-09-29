@@ -17,6 +17,7 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 			\    'min_word_len': 3,
 			\  },
 			\ }))
+imap <A-space> <Plug>(asyncomplete_force_refresh)
 
 if executable('html-languageserver')
 	au User lsp_setup call lsp#register_server({
