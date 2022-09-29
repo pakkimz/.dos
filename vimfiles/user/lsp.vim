@@ -2,6 +2,7 @@ let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_min_chars = 1
 let g:lsp_signature_help_enabled = 0
 let g:lsp_completion_documentation_enabled = 0
+let g:lsp_diagnostics_highlights_enabled = 0
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
 			\ 'name': 'buffer',
