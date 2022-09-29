@@ -17,7 +17,6 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 			\    'min_word_len': 3,
 			\  },
 			\ }))
-imap <A-space> <Plug>(asyncomplete_force_refresh)
 
 if executable('html-languageserver')
 	au User lsp_setup call lsp#register_server({
@@ -92,3 +91,7 @@ augroup lsp_install
 	" call s:on_lsp_buffer_enabled only for languages that has the server registered.
 	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+imap <A-space> <Plug>(asyncomplete_force_refresh)
+inoremap <expr> <C-y> pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
+inoremap <expr> <C-e> pumvisible() ? asyncomplete#cancel_popup() : "\<End>"

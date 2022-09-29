@@ -15,7 +15,7 @@ noremap Q <Nop>
 " inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " working together
-inoremap <expr> <C-e> ((pumvisible())?("\<C-e>"):("\<End>"))
+" inoremap <expr> <C-e> ((pumvisible())?("\<C-e>"):("\<End>"))
 
 " make tab look like common editor
 inoremap <expr> <tab> pumvisible() ? "\<C-Y>" : "\<tab>"
