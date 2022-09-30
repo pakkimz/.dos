@@ -7,6 +7,7 @@ set synmaxcol=500                                       " syntax coloring lines 
 set regexpengine=1																			" fixes slow speed due to syntax highlighting
 set updatetime=300
 set nonumber
+set numberwidth=2
 set showcmd                                             " showing command history
 set noshowmode                                          " hide the insert status
 set noruler																							" hide info in bottom of screen
@@ -43,7 +44,7 @@ set autowrite		                                        " automatically save befo
 set complete-=i                                         " get rid system include in auto completion
 set shortmess=atIc																			" use abbreviation, truncate message, disable intro message and ins-completion-menu
 set pumheight=10																				" makes popup menu smaller
-set laststatus=1
+set laststatus=0
 set scrolloff=2
 set sidescrolloff=2
 set splitbelow
