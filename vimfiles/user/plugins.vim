@@ -35,12 +35,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'                                   " put this on the last
 " Plug 'tpope/vim-fugitive'
-" Plug 'AndrewRadev/splitjoin.vim'                        " gS and gJ split and join
 " Plug 'Yggdroot/indentLine'															" need expandtab to make it works
 " Plug 'gregsexton/MatchTag'
 Plug 'ap/vim-css-color'
 Plug 'ivalkeen/vim-simpledb', { 'for' : 'sql' }
-" LSP
+" ----------LSP----------
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
