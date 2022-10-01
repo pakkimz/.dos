@@ -13,8 +13,6 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 			\ 'completor': function('asyncomplete#sources#buffer#completor'),
 			\ 'config': {
 			\    'max_buffer_size': 5000000,
-			\    'clear_cache': 1,
-			\    'min_word_len': 3,
 			\  },
 			\ }))
 
