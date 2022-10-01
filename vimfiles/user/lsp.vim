@@ -6,6 +6,16 @@ let g:lsp_completion_documentation_enabled = 0
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_signs_insert_mode_enabled = 0
 
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+			\ 'name': 'buffer',
+			\ 'allowlist': ['*'],
+			\ 'blocklist': ['go'],
+			\ 'completor': function('asyncomplete#sources#buffer#completor'),
+			\ 'config': {
+			\    'max_buffer_size': 5000000,
+			\  },
+			\ }))
+
 if executable('html-languageserver')
 	au User lsp_setup call lsp#register_server({
 				\ 'name': 'html-languageserver',
