@@ -5,11 +5,12 @@ let g:lsp_document_highlight_enabled = 0
 let g:lsp_completion_documentation_enabled = 0
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+let g:lsp_fold_enabled = 0
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
 			\ 'name': 'buffer',
 			\ 'allowlist': ['*'],
-			\ 'blocklist': ['go'],
+			\ 'blocklist': ['html', 'css', 'javascript'],
 			\ 'completor': function('asyncomplete#sources#buffer#completor'),
 			\ 'config': {
 			\    'max_buffer_size': 5000000,
